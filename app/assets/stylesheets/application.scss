@@ -16,9 +16,48 @@
 
 @font-face {
     font-family: 'Century Gothic';
-    src:font-url('CenturyGothic.ttf')
+    src:font-url('CenturyGothic.ttf');
 }
+
+@font-face {
+    font-family: 'Century Gothic';
+    src:font-url('CenturyGothic.ttf');
+    font-weight: bold;
+}
+
+$color-blue: #0B98FF;
+$color-black:  #211b23;
+$color-yellow: #ffd60d;
 
 body {
     font-family: 'Century Gothic';
+    background-color: #f2f2f2;
+}
+
+.navbar {
+    padding: 1px !important;
+}
+
+.bg-dark {
+    background-color: $color-black !important;
+}
+
+.blue-color {
+    color: $color-blue !important;
+}
+
+.yellow-nav {
+    background-color: $color-yellow;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: $color-black;
+    color: $color-yellow;
+    text-align: center;
+    padding: 0.5em;
+    font-weight: bold;
 }

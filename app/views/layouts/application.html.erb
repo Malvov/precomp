@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Precomp</title>
+    <title><%= yield :title %> | PRECOMP</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,6 +13,13 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= flash_messages %>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
+    
+    
+<div class="footer">
+  <p>Footer</p>
+</div>
   </body>
 </html>

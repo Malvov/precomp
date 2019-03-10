@@ -1,0 +1,23 @@
+
+<%= simple_form_for(@provider) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :contact %>
+    <%= f.input :max_product_quantity %>
+    <%= f.input :subscription_end_date %>
+    <%= f.input :phone %>
+    <%= f.input :personal_contact %>
+    <%= f.input :administrative_contact %>
+    <%= f.input :email %>
+    <%= f.input :webpage_link %>
+    <%= f.input :address %>
+    <%= f.input :is_active %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

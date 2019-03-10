@@ -62,3 +62,6 @@ gem 'jquery-rails'
 
 # Favicon
 gem 'rails_real_favicon'
+
+# Simple form
+gem 'simple_form'

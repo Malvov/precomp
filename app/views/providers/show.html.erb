@@ -1,0 +1,57 @@
+<p>
+  <strong>Name:</strong>
+  <%= @provider.name %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @provider.contact %>
+</p>
+
+<p>
+  <strong>Max product quantity:</strong>
+  <%= @provider.max_product_quantity %>
+</p>
+
+<p>
+  <strong>Subscription end date:</strong>
+  <%= @provider.subscription_end_date %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @provider.phone %>
+</p>
+
+<p>
+  <strong>Personal contact:</strong>
+  <%= @provider.personal_contact %>
+</p>
+
+<p>
+  <strong>Administrative contact:</strong>
+  <%= @provider.administrative_contact %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @provider.email %>
+</p>
+
+<p>
+  <strong>Webpage link:</strong>
+  <%= @provider.webpage_link %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @provider.address %>
+</p>
+
+<p>
+  <strong>Is active:</strong>
+  <%= @provider.is_active %>
+</p>
+
+<%= link_to 'Edit', edit_provider_path(@provider) %> |
+<%= link_to 'Back', providers_path %>
