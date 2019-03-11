@@ -21,17 +21,18 @@
 
 @font-face {
     font-family: 'Century Gothic';
-    src:font-url('CenturyGothic.ttf');
+    src:font-url('CenturyGothicBold.TTF');
     font-weight: bold;
 }
 
 $color-blue: #0B98FF;
 $color-black:  #211b23;
 $color-yellow: #ffd60d;
+$color-gray:  #f2f2f2;
 
 body {
     font-family: 'Century Gothic';
-    background-color: #f2f2f2;
+    background-color: $color-gray;
 }
 
 .navbar {
@@ -51,7 +52,7 @@ body {
 }
 
 .footer {
-    position: fixed;
+    position: relative;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -60,4 +61,8 @@ body {
     text-align: center;
     padding: 0.5em;
     font-weight: bold;
+}
+
+.bottom {
+    margin-bottom: 10%;
 }
