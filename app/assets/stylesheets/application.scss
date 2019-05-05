@@ -30,6 +30,14 @@ $color-black:  #211b23;
 $color-yellow: #ffd60d;
 $color-gray:  #f2f2f2;
 
+html,body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
 body {
     font-family: 'Century Gothic';
     background-color: $color-gray;
@@ -45,6 +53,11 @@ body {
 
 .blue-color {
     color: $color-blue !important;
+}
+
+.blue-color-bold {
+    @extend .blue-color;
+    font-weight: bold;
 }
 
 .yellow-nav {
@@ -65,4 +78,14 @@ body {
 
 .bottom {
     margin-bottom: 10%;
+}
+
+.row-center {
+    padding: 1%;
+}
+
+.card-small-text {
+    @extend .card-text;
+    font-size: 14px;
+    padding: 5%;
 }
