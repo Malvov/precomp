@@ -4,7 +4,7 @@ class CreateProviders < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :contact
       t.integer :max_product_quantity
-      t.datetime :subscription_end_date
+      t.date :subscription_end_date
       t.string :phone
       t.string :personal_contact
       t.string :administrative_contact
