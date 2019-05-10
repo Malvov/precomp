@@ -1,6 +1,5 @@
 class ProvidersController < ApplicationController
   before_action :set_provider, only: [:show, :edit, :update, :destroy]
-  before_action :set_title, only: [:show, :index, :edit, :new]
 
   # GET /providers
   # GET /providers.json
@@ -66,10 +65,6 @@ class ProvidersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_provider
       @provider = Provider.find(params[:id])
-    end
-
-    def set_title
-      @title = 'Proveedores'
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

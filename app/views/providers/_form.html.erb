@@ -1,23 +1,52 @@
+<div class="card">
+  <div class="card-body">
+    <%= form_with(model: provider, local: true) do |form| %>
+      <% if provider.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(provider.errors.count, "error") %> prohibited this provider from being saved:</h2>
 
-<%= simple_form_for @provider, html: { class: 'bottom' } do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+          <ul>
+          <% provider.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <div class="form-inputs">
-    <%= f.input :name, class: 'form-control' %>
-    <%= f.input :contact %>
-    <%= f.input :max_product_quantity %>
-    <%= f.text_field :subscription_end_date, class: 'form-control datepicker' %>
-    <%= f.input :phone %>
-    <%= f.input :personal_contact %>
-    <%= f.input :administrative_contact %>
-    <%= f.input :email %>
-    <%= f.input :webpage_link %>
-    <%= f.input :address %>
-    <%= f.input :is_active %>
+      <div class="row">
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <%= form.text_field :name, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label for="phone">Teléfono</label>
+            <%= form.text_field :phone, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label for="name">Contacto personal</label>
+            <%= form.text_field :personal_contact, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label for="phone">Contacto administrativo</label>
+            <%= form.text_field :administrative_contact, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+</div>

@@ -1,48 +1,47 @@
-<div class="bottom">
-  <% provide :title, @title %>
-  <h1>Providers</h1>
+<p id="notice"><%= notice %></p>
 
-  <table class="table table-hover table-responsive">
-    <thead>
+<h1>Providers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Contact</th>
+      <th>Max product quantity</th>
+      <th>Subscription end date</th>
+      <th>Phone</th>
+      <th>Personal contact</th>
+      <th>Administrative contact</th>
+      <th>Email</th>
+      <th>Webpage link</th>
+      <th>Address</th>
+      <th>Is active</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @providers.each do |provider| %>
       <tr>
-        <th>Name</th>
-        <th>Contact</th>
-        <th>Max product quantity</th>
-        <th>Subscription end date</th>
-        <th>Phone</th>
-        <th>Personal contact</th>
-        <th>Administrative contact</th>
-        <th>Email</th>
-        <th>Webpage link</th>
-        <th>Address</th>
-        <th>Is active</th>
-        <th colspan="3"></th>
+        <td><%= provider.name %></td>
+        <td><%= provider.contact %></td>
+        <td><%= provider.max_product_quantity %></td>
+        <td><%= provider.subscription_end_date %></td>
+        <td><%= provider.phone %></td>
+        <td><%= provider.personal_contact %></td>
+        <td><%= provider.administrative_contact %></td>
+        <td><%= provider.email %></td>
+        <td><%= provider.webpage_link %></td>
+        <td><%= provider.address %></td>
+        <td><%= provider.is_active %></td>
+        <td><%= link_to 'Show', provider %></td>
+        <td><%= link_to 'Edit', edit_provider_path(provider) %></td>
+        <td><%= link_to 'Destroy', provider, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    </thead>
+    <% end %>
+  </tbody>
+</table>
 
-    <tbody>
-      <% @providers.each do |provider| %>
-        <tr>
-          <td><%= provider.name %></td>
-          <td><%= provider.contact %></td>
-          <td><%= provider.max_product_quantity %></td>
-          <td><%= provider.subscription_end_date %></td>
-          <td><%= provider.phone %></td>
-          <td><%= provider.personal_contact %></td>
-          <td><%= provider.administrative_contact %></td>
-          <td><%= provider.email %></td>
-          <td><%= provider.webpage_link %></td>
-          <td><%= provider.address %></td>
-          <td><%= provider.is_active %></td>
-          <td><%= link_to 'Show', provider %></td>
-          <td><%= link_to 'Edit', edit_provider_path(provider) %></td>
-          <td><%= link_to 'Destroy', provider, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<br>
 
-  <br>
-
-  <%= link_to 'New Provider', new_provider_path %>
-</div>
+<%= link_to 'New Provider', new_provider_path %>
