@@ -43,6 +43,62 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label for="name">Cantidad máxima de productos</label>
+            <input name="provider[max_product_quantity]" type="number" value="<%= form.object.max_product_quantity %>" min="0" max="100" step="1"/>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label for="name">Fecha fin suscripción</label>
+            <div class="input-group">
+              <%= form.text_field :subscription_end_date, class: 'form-control datepicker' %>
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label for="name">Email</label>
+            <%= form.email_field :email, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label for="name">Página web</label>
+            <%= form.text_field :webpage_link, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label for="address">Dirección</label>
+            <%= form.text_area :address, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-14 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label for="is_active">¿Activo?</label>
+            <div class="custom-control custom-radio">
+              <%= label_tag :is_active, 'Sí', class: 'custom-control-label' %>
+              <%= form.radio_button :is_active, true, class: 'form-control custom-control-input' %>
+              <%= label_tag :is_active, 'No', class: 'custom-control-label' %>
+              <%= form.radio_button :is_active, false, class: 'form-control custom-control-input' %>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
       <div class="actions">
         <%= form.submit %>

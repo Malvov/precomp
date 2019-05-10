@@ -19,5 +19,9 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({
+        language: 'es'
+    });
+
+    $("input[type='number']").inputSpinner();
 });
