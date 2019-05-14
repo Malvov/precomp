@@ -31,13 +31,13 @@
       <div class="row">
         <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
           <div class="form-group">
-            <label for="name">Contacto personal</label>
+            <label for="personal_contact">Contacto personal</label>
             <%= form.text_field :personal_contact, class: 'form-control' %>
           </div>
         </div>
         <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
           <div class="form-group">
-            <label for="phone">Contacto administrativo</label>
+            <label for="administrative_contact">Contacto administrativo</label>
             <%= form.text_field :administrative_contact, class: 'form-control' %>
           </div>
         </div>
@@ -46,13 +46,13 @@
       <div class="row">
         <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
           <div class="form-group">
-            <label for="name">Cantidad máxima de productos</label>
+            <label for="max_product_quantity">Cantidad máxima de productos</label>
             <input name="provider[max_product_quantity]" type="number" value="<%= form.object.max_product_quantity %>" min="0" max="100" step="1"/>
           </div>
         </div>
         <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
           <div class="form-group">
-            <label for="name">Fecha fin suscripción</label>
+            <label for="subscription_end_date">Fecha fin suscripción</label>
             <div class="input-group">
               <%= form.text_field :subscription_end_date, class: 'form-control datepicker' %>
               <div class="input-group-append">
@@ -66,42 +66,33 @@
       <div class="row">
         <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
           <div class="form-group">
-            <label for="name">Email</label>
+            <label for="email">Email</label>
             <%= form.email_field :email, class: 'form-control' %>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
           <div class="form-group">
-            <label for="name">Página web</label>
+            <label for="webpage_link">Página web</label>
             <%= form.text_field :webpage_link, class: 'form-control' %>
           </div>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-          <div class="form-group">
-            <label for="address">Dirección</label>
-            <%= form.text_area :address, class: 'form-control' %>
-          </div>
-        </div>
         <div class="col-md-4 col-lg-14 col-sm-12 col-xs-12">
           <div class="form-group">
-            <label for="is_active">¿Activo?</label>
-            <div class="custom-control custom-radio">
-              <%= label_tag :is_active, 'Sí', class: 'custom-control-label' %>
-              <%= form.radio_button :is_active, true, class: 'form-control custom-control-input' %>
-              <%= label_tag :is_active, 'No', class: 'custom-control-label' %>
-              <%= form.radio_button :is_active, false, class: 'form-control custom-control-input' %>
+            <div class="form-check pl-0">
+              <%= form.check_box :is_active, class: 'form-check-input', 'data-toggle': 'toggle', 'data-on': 'Sí', 'data-off': 'No', 'data-onstyle': 'success', 'data-offstyle': 'danger' %>
+              <label for="is_active" class="form-check-label">Activo</label>
             </div>
           </div>
         </div>
       </div>
 
-
+      
       <div class="actions">
-        <%= form.submit %>
+        <%= form.submit 'Guardar', class: 'btn btn-success' %>
       </div>
     <% end %>
   </div>

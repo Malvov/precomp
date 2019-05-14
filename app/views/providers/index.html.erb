@@ -1,12 +1,10 @@
-<p id="notice"><%= notice %></p>
-
+<% provide :title, 'Proveedores' %>
 <h1>Providers</h1>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Contact</th>
       <th>Max product quantity</th>
       <th>Subscription end date</th>
       <th>Phone</th>
@@ -24,7 +22,6 @@
     <% @providers.each do |provider| %>
       <tr>
         <td><%= provider.name %></td>
-        <td><%= provider.contact %></td>
         <td><%= provider.max_product_quantity %></td>
         <td><%= provider.subscription_end_date %></td>
         <td><%= provider.phone %></td>

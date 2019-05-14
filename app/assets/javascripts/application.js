@@ -16,6 +16,7 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require bootstrap4-toggle/js/bootstrap4-toggle
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
@@ -24,4 +25,6 @@ $(document).on('turbolinks:load', function() {
     });
 
     $("input[type='number']").inputSpinner();
+
+    $('input[type="checkbox"]').bootstrapToggle();
 });
