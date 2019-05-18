@@ -2,14 +2,11 @@
 <% provide :head_tags do %>
     <meta name='turbolinks-visit-control' content='reload'>
     <script>
-
       document.addEventListener("DOMContentLoaded", function(){
           initMap(<%=@provider.address.latitude%>, <%=@provider.address.longitude%>)
       });
     </script>
 <% end %>
-
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Name:</strong>
@@ -62,8 +59,7 @@
 </p>
 
 <p>
-  <div id="map">
-
+  <div class="map">
   </div>
 </p>
 

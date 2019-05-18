@@ -11,7 +11,6 @@
 #  administrative_contact :string
 #  email                  :string
 #  webpage_link           :string
-#  address                :text
 #  is_active              :boolean          default(FALSE)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null

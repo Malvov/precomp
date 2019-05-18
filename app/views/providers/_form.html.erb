@@ -97,7 +97,35 @@
         </div>
       </div>
 
+      <%= form.fields_for :address do |ff|  %>
+        
+        <div class="row">
+          <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+              <label for="longitude">Lontigud</label>
+              <%= ff.text_field :longitude, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+              <label for="latitude">Latitude</label>
+              <%= ff.text_field :latitude, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
       
+
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="description">Dirección</label>
+              <%= ff.text_area :description, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
       <div class="actions">
         <%= form.submit 'Guardar', class: 'btn btn-success' %>
       </div>

@@ -15,6 +15,7 @@ class ProvidersController < ApplicationController
   # GET /providers/new
   def new
     @provider = Provider.new
+    @provider.build_address
   end
 
   # GET /providers/1/edit
@@ -69,6 +70,10 @@ class ProvidersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def provider_params
-      params.require(:provider).permit(:name, :contact, :max_product_quantity, :subscription_end_date, :phone, :personal_contact, :administrative_contact, :email, :webpage_link, :address, :is_active)
+      params.require(:provider).permit(:name, :contact, :max_product_quantity, 
+        :subscription_end_date, :phone, :personal_contact, :administrative_contact, 
+        :email, :webpage_link, :address, :is_active,
+        address_attributes: [:id, :longitude, :latitude, :description]
+        )
     end
 end
