@@ -2,7 +2,7 @@
 #
 # Table name: providers
 #
-#  id                     :bigint(8)        not null, primary key
+#  id                     :bigint           not null, primary key
 #  name                   :string
 #  max_product_quantity   :integer          default(0)
 #  subscription_end_date  :date
@@ -20,5 +20,5 @@
 class Provider < ApplicationRecord
     has_one :address
 
-    accepts_nested_attributes_for :address
+    accepts_nested_attributes_for :address, reject_if: :all_blank
 end

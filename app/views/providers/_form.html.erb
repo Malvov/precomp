@@ -17,7 +17,14 @@
         <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
           <div class="form-group">
             <label for="name">Nombre</label>
-            <%= form.text_field :name, class: 'form-control' %>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-id-card"></i>
+                </div>
+              </div>
+              <%= form.text_field :name, class: 'form-control' %>
+            </div>
           </div>
         </div>
         <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
