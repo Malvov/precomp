@@ -1,3 +1,9 @@
+<% provide :head_tags do %>
+  <meta name='turbolinks-visit-control' content='reload'>
+  <script>
+    document.addEventListener("DOMContentLoaded", initInputMap);
+  </script>
+<% end %>
 <div class="card">
   <div class="card-body">
     <%= form_with(model: provider, local: true) do |form| %>
@@ -30,7 +36,14 @@
         <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
           <div class="form-group">
             <label for="phone">Teléfono</label>
-            <%= form.text_field :phone, class: 'form-control' %>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-phone-square"></i>
+                </div>
+              </div>
+              <%= form.text_field :phone, class: 'form-control' %>
+            </div>
           </div>
         </div>
       </div>
@@ -39,13 +52,27 @@
         <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
           <div class="form-group">
             <label for="personal_contact">Contacto personal</label>
-            <%= form.text_field :personal_contact, class: 'form-control' %>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-address-book"></i>
+                </div>
+              </div>
+              <%= form.text_field :personal_contact, class: 'form-control' %>
+            </div>
           </div>
         </div>
         <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
           <div class="form-group">
             <label for="administrative_contact">Contacto administrativo</label>
-            <%= form.text_field :administrative_contact, class: 'form-control' %>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-id-badge"></i>
+                </div>
+              </div>
+              <%= form.text_field :administrative_contact, class: 'form-control' %>
+            </div>
           </div>
         </div>
       </div>
@@ -61,10 +88,10 @@
           <div class="form-group">
             <label for="subscription_end_date">Fecha fin suscripción</label>
             <div class="input-group">
-              <%= form.text_field :subscription_end_date, class: 'form-control datepicker' %>
-              <div class="input-group-append">
+              <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fa fa-calendar"></i></span>
               </div>
+              <%= form.text_field :subscription_end_date, class: 'form-control datepicker' %>
             </div>
           </div>
         </div>
@@ -74,14 +101,28 @@
         <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
           <div class="form-group">
             <label for="email">Email</label>
-            <%= form.email_field :email, class: 'form-control' %>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-at"></i>
+                </div>
+              </div>
+              <%= form.email_field :email, class: 'form-control' %>
+            </div>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
           <div class="form-group">
             <label for="webpage_link">Página web</label>
-            <%= form.text_field :webpage_link, class: 'form-control' %>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-link"></i>
+                </div>
+              </div>
+              <%= form.text_field :webpage_link, class: 'form-control' %>
+            </div>
           </div>
         </div>
       </div>
@@ -98,24 +139,6 @@
       </div>
 
       <%= form.fields_for :address do |ff|  %>
-        
-        <div class="row">
-          <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-            <div class="form-group">
-              <label for="longitude">Lontigud</label>
-              <%= ff.text_field :longitude, class: 'form-control' %>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-            <div class="form-group">
-              <label for="latitude">Latitude</label>
-              <%= ff.text_field :latitude, class: 'form-control' %>
-            </div>
-          </div>
-        </div>
-      
-
         <div class="row">
           <div class="col-12">
             <div class="form-group">
@@ -124,7 +147,17 @@
             </div>
           </div>
         </div>
+        <%= ff.hidden_field :latitude %>
+        <%= ff.hidden_field :longitude %>
       <% end %>
+
+      <div class="row">
+        <div class="col-12">
+          <div id="input-map"></div>
+        </div>
+      </div>
+
+      <br>
 
       <div class="actions">
         <%= form.submit 'Guardar', class: 'btn btn-success' %>
