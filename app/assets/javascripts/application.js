@@ -17,6 +17,8 @@
 //= require popper
 //= require bootstrap
 //= require bootstrap4-toggle/js/bootstrap4-toggle
+//= require bootstrap-datepicker/js/bootstrap-datepicker
+//= require bootstrap-datepicker/js/locales/bootstrap-datepicker.es.js
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
