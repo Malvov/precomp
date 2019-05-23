@@ -1,0 +1,46 @@
+<% provide :head_tags do %>
+  <meta name='turbolinks-visit-control' content='reload'>
+  <script>
+    document.addEventListener("DOMContentLoaded", initInputMap);
+  </script>
+<% end %>
+
+<div class="card">
+    <div class="card-body">
+        <%= form_with(model: address, url: provider_branch_offices_path(address.provider_id), scope: 'address', local: true) do |form| %>
+            <% if address.errors.any? %>
+                <div id="error_explanation">
+                    <h2><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+                    <ul>
+                        <% provider.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 col-12">
+                    <div class="form-group">
+                        <label for="description">Dirección</label>
+                        <%= form.text_area :description, class: 'form-control' %>
+                    </div>
+                </div>
+            </div>
+            <%= form.hidden_field :latitude %>
+            <%= form.hidden_field :longitude %>
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                    <label for="map">Arrastrar el marcador para fijar la dirección</label>
+                    <div id="input-map"></div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="actions">
+                <%= form.submit 'Guardar', class: 'btn btn-success' %>
+            </div>
+        <% end %>
+    </div>
+</div>
