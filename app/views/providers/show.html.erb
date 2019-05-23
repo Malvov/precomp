@@ -1,12 +1,12 @@
+<% provide :title, @provider.name %>
 <% provide :head_tags do %>
   <meta name='turbolinks-visit-control' content='reload'>
   <script>
     document.addEventListener("DOMContentLoaded", function(){
-      initShowMap(<%=@provider.address.latitude%>, <%=@provider.address.longitude%>)
+      initShowMap(0, 0)
     });
   </script>
 <% end %>
-<% provide :title, @provider.name %>
 
 <p>
   <strong>Name:</strong>
@@ -51,11 +51,6 @@
 <p>
   <strong>Is active:</strong>
   <%= @provider.is_active %>
-</p>
-
-<p>
-  <div id="show-map">
-  </div>
 </p>
 
 <%= link_to 'Edit', edit_provider_path(@provider) %> |
