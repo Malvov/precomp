@@ -18,4 +18,5 @@
 
 class Provider < ApplicationRecord
     has_many :addresses
+    has_one_attached :logo
 end

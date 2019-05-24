@@ -1,11 +1,11 @@
 <% provide :title, @provider.name %>
 <% provide :head_tags do %>
-  <meta name='turbolinks-visit-control' content='reload'>
+  <%# <meta name='turbolinks-visit-control' content='reload'>
   <script>
     document.addEventListener("DOMContentLoaded", function(){
       initShowMap(0, 0)
     });
-  </script>
+  </script> %>
 <% end %>
 
 <p>
@@ -52,6 +52,8 @@
   <strong>Is active:</strong>
   <%= @provider.is_active %>
 </p>
+
+<%= image_tag @provider.logo.variant(resize: '180x180') %>
 
 <%= link_to 'Edit', edit_provider_path(@provider) %> |
 <%= link_to 'Back', providers_path %>

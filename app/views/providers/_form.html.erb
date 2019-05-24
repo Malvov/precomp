@@ -122,13 +122,25 @@
       </div>
 
       <div class="row">
-        <div class="col-md-4 col-lg-14 col-sm-12 col-xs-12">
+        <div class="col-md-6 col-lg-12 col-sm-12 col-xs-12">
           <div class="form-group">
             <div class="form-check pl-0">
               <%= form.check_box :is_active, class: 'form-check-input', 'data-toggle': 'toggle', 'data-on': 'Sí', 'data-off': 'No', 'data-onstyle': 'success', 'data-offstyle': 'danger' %>
               <label for="is_active" class="form-check-label">Activo</label>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
+          <%= form.label :logo, class: 'btn btn-success' do %>
+            Browse <%= form.file_field :logo, hidden: true %>
+          <% end %>
+          
+        </div>
+        <div class="col-md-10 col-lg-10 col-sm-12 col-xs-12">
+          <img id="img-prev" src="#" alt="" />
         </div>
       </div>
       

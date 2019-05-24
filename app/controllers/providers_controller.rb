@@ -71,8 +71,6 @@ class ProvidersController < ApplicationController
     def provider_params
       params.require(:provider).permit(:name, :contact, :max_product_quantity, 
         :subscription_end_date, :phone, :personal_contact, :administrative_contact, 
-        :email, :webpage_link, :address, :is_active,
-        address_attributes: [:id, :longitude, :latitude, :description]
-        )
+        :email, :webpage_link, :address, :is_active, :logo)
     end
 end
