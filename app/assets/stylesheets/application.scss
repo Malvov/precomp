@@ -93,11 +93,7 @@ body {
     padding: 2.5%;
 }
 
-#show-map {
+#input-map {
     width: 600px;
     height: 400px;
-}
-
-#input-map {
-    @extend #show-map;
 }

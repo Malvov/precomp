@@ -1,18 +1,3 @@
-function initShowMap(addresses) {
-    // var myCoords = new google.maps.LatLng(lat, lng);
-    // var mapOptions = {
-    //     center: myCoords,
-    //     zoom: 14
-    // };
-
-    // var map = new google.maps.Map(document.getElementById('show-map'), mapOptions);
-    // console.log(mapOptions);
-    // var marker = new google.maps.Marker({
-    //     position: myCoords,
-    //     map: map
-    // });
-};
-
 function initInputMap() {
     var lat = document.getElementById('address_latitude').value;
     var lng = document.getElementById('address_longitude').value;

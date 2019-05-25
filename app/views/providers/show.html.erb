@@ -1,63 +1,41 @@
 <% provide :title, @provider.name %>
 <% provide :head_tags do %>
-  <%# <meta name='turbolinks-visit-control' content='reload'>
+  <meta name='turbolinks-visit-control' content='reload'>
   <script>
     document.addEventListener("DOMContentLoaded", function(){
-      initShowMap(0, 0)
+      initShowMap(<%= @addresses.html_safe %>)
     });
-  </script> %>
+  </script>
 <% end %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @provider.name %>
-</p>
+<div class="row" style="margin-top: 5%; padding: 0 30% 5% 30%;">
+  <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+    <% if @provider.logo.attached? %>
+      <%= image_tag @provider.thumbnail %>
+    <% else %>
+      <%= image_tag 'no-img.jpg', size: '180x180' %>
+    <% end %>
+  </div>
+  <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+    <div class="row">
+      <div class="col-12">
+        <h4 style="display: inline;"><%= @provider.name %> </h4>
+      </div>
+      <div class="col-12">
+        Estrellitas
+      </div>
+      <div class="col-12">
+        Ingresar a: 
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Max product quantity:</strong>
-  <%= @provider.max_product_quantity %>
-</p>
-
-<p>
-  <strong>Subscription end date:</strong>
-  <%= @provider.subscription_end_date %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @provider.phone %>
-</p>
-
-<p>
-  <strong>Personal contact:</strong>
-  <%= @provider.personal_contact %>
-</p>
-
-<p>
-  <strong>Administrative contact:</strong>
-  <%= @provider.administrative_contact %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @provider.email %>
-</p>
-
-<p>
-  <strong>Webpage link:</strong>
-  <%= @provider.webpage_link %>
-</p>
-
-<p>
-  <strong>Is active:</strong>
-  <%= @provider.is_active %>
-</p>
-
-<% if @provider.logo.attached? %>
-  <%= image_tag @provider.thumbnail %>
-<% else %>
-  <%= image_tag 'no-img.jpg', size: '180x180' %>
-<% end %>
+<div class="row">
+  <% @provider.addresses.each do |address| %>
+    <div id="show-map-<%= address.id %>" style="width: 600px; height: 400px;"></div>
+  <% end %>
+</div>
 
 <%= link_to 'Edit', edit_provider_path(@provider) %> |
 <%= link_to 'Back', providers_path %>
