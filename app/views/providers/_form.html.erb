@@ -134,13 +134,17 @@
 
       <div class="row">
         <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
-          <%= form.label :logo, class: 'btn btn-success' do %>
-            Browse <%= form.file_field :logo, hidden: true %>
+          <%= form.label :logo, class: 'btn btn-primary' do %>
+            Buscar logo <%= form.file_field :logo, hidden: true, accept:'image/png' %>
           <% end %>
           
         </div>
         <div class="col-md-10 col-lg-10 col-sm-12 col-xs-12">
-          <img id="img-prev" src="#" alt="" />
+          <% if form.object.new_record? %>
+            <img class="img-fuild" id="img-prev" src="#" alt="" />
+          <% else %>
+            <%= image_tag form.object.thumbnail, id: 'img-prev', class: 'img-fuild' %>
+          <% end %>
         </div>
       </div>
       

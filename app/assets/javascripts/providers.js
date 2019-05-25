@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', function() {
             var fileReader = new FileReader();
 
             fileReader.onload = function (e) {
-                $('#img-prev').attr('src', e.target.result).width(150).height(200);
+                $('#img-prev').attr('src', e.target.result).width(180).height(180);
             };
 
             fileReader.readAsDataURL(event.target.files[0]);

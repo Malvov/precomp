@@ -1,16 +1,16 @@
-function initShowMap(lat, lng) {
-    var myCoords = new google.maps.LatLng(lat, lng);
-    var mapOptions = {
-        center: myCoords,
-        zoom: 14
-    };
+function initShowMap(addresses) {
+    // var myCoords = new google.maps.LatLng(lat, lng);
+    // var mapOptions = {
+    //     center: myCoords,
+    //     zoom: 14
+    // };
 
-    var map = new google.maps.Map(document.getElementById('show-map'), mapOptions);
-    console.log(mapOptions);
-    var marker = new google.maps.Marker({
-        position: myCoords,
-        map: map
-    });
+    // var map = new google.maps.Map(document.getElementById('show-map'), mapOptions);
+    // console.log(mapOptions);
+    // var marker = new google.maps.Marker({
+    //     position: myCoords,
+    //     map: map
+    // });
 };
 
 function initInputMap() {

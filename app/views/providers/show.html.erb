@@ -53,7 +53,11 @@
   <%= @provider.is_active %>
 </p>
 
-<%= image_tag @provider.logo.variant(resize: '180x180') %>
+<% if @provider.logo.attached? %>
+  <%= image_tag @provider.thumbnail %>
+<% else %>
+  <%= image_tag 'no-img.jpg', size: '180x180' %>
+<% end %>
 
 <%= link_to 'Edit', edit_provider_path(@provider) %> |
 <%= link_to 'Back', providers_path %>

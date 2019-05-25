@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :providers do
-    resources :addresses, path: :branch_offices, as: :branch_offices, except: [:index, :destroy]
+    resources :addresses, path: :branch_offices, as: :branch_offices, except: [:index, :destroy, :show]
   end
   
   root to: 'static_pages#index'
