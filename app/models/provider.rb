@@ -29,7 +29,9 @@ class Provider < ApplicationRecord
 #   end
 
     def thumbnail
-        logo.variant(resize: '180x180!').processed
+        if logo.attached?
+            logo.variant(resize: '180x180!').processed
+        end
     end
 
 end

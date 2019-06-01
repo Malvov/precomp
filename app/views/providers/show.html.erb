@@ -1,40 +1,54 @@
 <% provide :title, @provider.name %>
-<% provide :head_tags do %>
-  <meta name='turbolinks-visit-control' content='reload'>
-  <script>
-    document.addEventListener("DOMContentLoaded", function(){
-      initShowMap(<%= @addresses.html_safe %>)
-    });
-  </script>
-<% end %>
 
-<div class="row" style="margin-top: 5%; padding: 0 30% 5% 30%;">
+<div class="row" style="margin-top: 5%; padding: 2% 30% 2% 30%; background-color: #282828;">
   <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
-    <% if @provider.logo.attached? %>
-      <%= image_tag @provider.thumbnail %>
-    <% else %>
+
       <%= image_tag 'no-img.jpg', size: '180x180' %>
-    <% end %>
+
   </div>
   <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
-    <div class="row">
+    <div class="row" style="color: white;">
       <div class="col-12">
         <h4 style="display: inline;"><%= @provider.name %> </h4>
       </div>
-      <div class="col-12">
+      <div class="col-12 provider-info">
+        <%= link_to 'Contactar proveedor', '#', class: 'btn btn-danger' %>
+      </div>
+      <div class="col-12 provider-info">
         Estrellitas
       </div>
-      <div class="col-12">
-        Ingresar a: 
+      <div class="col-12 provider-info">
+        Enlaces
       </div>
     </div>
   </div>
 </div>
 
-<div class="row">
-  <% @provider.addresses.each do |address| %>
-    <div id="show-map-<%= address.id %>" style="width: 600px; height: 400px;"></div>
-  <% end %>
+<div class="row" >
+    <div class="col-12" style="height: 25%; background-color: white; margin-top: 2%; border-radius: 0.5em;">
+        <div style="padding: 1%;">
+          <ul class="nav justify-content-center nav-tabs" id="providerTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="branch-offices-tab" data-toggle="tab" href="#branch-offices" role="tab" aria-controls="home" aria-selected="true">Sucursales</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="products-tab" data-toggle="tab" href="#products" role="tab" aria-controls="profile" aria-selected="false">Catálogo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="faq-tab" data-toggle="tab" href="#faq" role="tab" aria-controls="contact" aria-selected="false">Preguntas frecuentes</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myProviderTabContent">
+            <div class="tab-pane fade show active" id="branch-offices" role="tabpanel" aria-labelledby="branch-offices-tab">
+              <%= render 'addresses' %>
+            </div>
+            <div class="tab-pane fade" id="products" role="tabpanel" aria-labelledby="products-tab">
+              <%= render 'products' %>
+            </div>
+            <div class="tab-pane fade" id="faq" role="tabpanel" aria-labelledby="faq-tab">...</div>
+          </div>
+        </div>
+    </div>
 </div>
 
 <%= link_to 'Edit', edit_provider_path(@provider) %> |

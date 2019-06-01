@@ -140,7 +140,7 @@
           
         </div>
         <div class="col-md-10 col-lg-10 col-sm-12 col-xs-12">
-          <% if form.object.new_record? %>
+          <% if form.object.new_record? || !form.object.logo.attached? %>
             <img class="img-fuild" id="img-prev" src="#" alt="" />
           <% else %>
             <%= image_tag form.object.thumbnail, id: 'img-prev', class: 'img-fuild' %>
