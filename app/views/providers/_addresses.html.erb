@@ -18,9 +18,9 @@
     </div>
   </div>
   <div class="col-6">
-    <div class="nav flex-column nav-pills" id="address-tab" role="tablist" aria-orientation="vertical">
+    <div class="nav flex-column" id="address-tab" role="tablist" aria-orientation="vertical">
       <% @provider.addresses.take(5).each_with_index do |address, index| %>
-        <a class="nav-link <%= index == 0 ? 'active' : '' %>" id="address-<%= address.id %>-tab" data-toggle="pill" href="#map-<%= address.id %>-tab" role="tab" aria-controls="map-<%= address.id %>-tab">
+        <a class="nav-link <%= index == 0 ? 'active' : '' %> map-tab" id="address-<%= address.id %>-tab" data-toggle="tab" href="#map-<%= address.id %>-tab" role="tab" aria-controls="map-<%= address.id %>-tab">
           <%= address.description %>
         </a>
       <% end %>

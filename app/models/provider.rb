@@ -27,11 +27,4 @@ class Provider < ApplicationRecord
 #     resized_image.resize '180x180!'
 #     logo.attach io: File.open(resized_image.path), filename: logo.filename, content_type: logo.content_type
 #   end
-
-    def thumbnail
-        if logo.attached?
-            logo.variant(resize: '180x180!').processed
-        end
-    end
-
 end
