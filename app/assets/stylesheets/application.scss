@@ -46,6 +46,14 @@ body {
     background-color: $color-gray;
 }
 
+a, a:hover {
+     color: inherit;
+}
+
+.map-tab:focus {
+    font-weight: bold;
+}
+
 .navbar {
     padding: 1px !important;
 }

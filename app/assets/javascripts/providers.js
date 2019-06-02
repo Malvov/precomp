@@ -13,7 +13,7 @@ $(document).on('turbolinks:load', function() {
 });
 
 function initShowMap(addresses) {
-    addresses.forEach(address => {
+    addresses.forEach(function(address) {
         var myCoords = new google.maps.LatLng(address.latitude, address.longitude);
         var mapOptions = {
             center: myCoords,
