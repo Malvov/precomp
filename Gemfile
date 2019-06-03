@@ -69,3 +69,5 @@ gem 'rails_real_favicon'
 
 
 gem 'simple_form'
+
+gem 'google-cloud-storage', '~> 1.8', require: false
