@@ -52,11 +52,6 @@ group :development do
   gem 'annotate'
 end
 
-group :production do
-  gem 'google-cloud-storage', "~> 1.8", require: false
-end
-
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
@@ -69,3 +64,5 @@ gem 'rails_real_favicon'
 
 
 gem 'simple_form'
+
+gem 'google-cloud-storage', '~> 1.8', require: false
