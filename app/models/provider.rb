@@ -18,7 +18,11 @@
 
 class Provider < ApplicationRecord
     has_many :addresses
+    has_many :products
+    
     has_one_attached :logo
+
+    validates_presence_of :name, :phone, :personal_contact, :administrative_contact, :email
 
 #     after_save :scale_image
 

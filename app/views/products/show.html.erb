@@ -1,0 +1,37 @@
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @product.tag %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Trademark:</strong>
+  <%= @product.trademark %>
+</p>
+
+<p>
+  <strong>Measurement unit:</strong>
+  <%= @product.measurement_unit %>
+</p>
+
+<p>
+  <strong>Estimated delivery time:</strong>
+  <%= @product.estimated_delivery_time %>
+</p>
+
+<p>
+  <strong>Providers:</strong>
+  <%= @product.providers %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
