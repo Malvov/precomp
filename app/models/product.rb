@@ -9,13 +9,16 @@
 #  trademark               :string
 #  measurement_unit        :string
 #  estimated_delivery_time :integer
+#  time_span               :string
 #  provider_id             :bigint
 #  price                   :decimal(, )
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
+#  category_id             :bigint
 #
 
 class Product < ApplicationRecord
-  belongs_to :provider
+  belongs_to :provider, optional: true
+  belongs_to :category
   validates_presence_of :name, :tags, :description, :trademark, :measurement_unit, :price
 end
