@@ -7,7 +7,7 @@
 
 <p>
   <strong>Tag:</strong>
-  <%= @product.tag %>
+  <%= @product.tags %>
 </p>
 
 <p>
@@ -30,10 +30,6 @@
   <%= @product.estimated_delivery_time %>
 </p>
 
-<p>
-  <strong>Providers:</strong>
-  <%= @product.providers %>
-</p>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

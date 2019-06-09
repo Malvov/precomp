@@ -10,7 +10,7 @@
       <th>Trademark</th>
       <th>Measurement unit</th>
       <th>Estimated delivery time</th>
-      <th>Providers</th>
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,12 +19,12 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= product.tag %></td>
+        <td><%= product.tags %></td>
         <td><%= product.description %></td>
         <td><%= product.trademark %></td>
         <td><%= product.measurement_unit %></td>
         <td><%= product.estimated_delivery_time %></td>
-        <td><%= product.providers %></td>
+        
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>

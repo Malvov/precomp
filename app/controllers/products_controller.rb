@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_time_spans, only: [:new, :create, :update, :edit]
 
   # GET /products
   # GET /products.json
@@ -26,6 +27,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
 
+    binding.pry
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -40,6 +42,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    binding.pry
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
@@ -67,8 +70,15 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
     end
 
+    def set_time_spans
+      @time_spans = Product::TIME_SPANS
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :tag, :description, :trademark, :measurement_unit, :estimated_delivery_time, :providers_id)
+      params.require(:product).permit(:name, 
+        :description, :trademark, :measurement_unit, :estimated_delivery_time, :category_id,
+        :price, :time_span, :tags => []
+      )
     end
 end

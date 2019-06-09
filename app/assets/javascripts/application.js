@@ -19,6 +19,8 @@
 //= require bootstrap4-toggle/js/bootstrap4-toggle
 //= require bootstrap-datepicker/js/bootstrap-datepicker
 //= require bootstrap-datepicker/js/locales/bootstrap-datepicker.es.js
+//= require select2/dist/js/select2
+//= require bootstrap-tagsinput
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
@@ -29,4 +31,10 @@ $(document).on('turbolinks:load', function() {
     $("input[type='number']").inputSpinner();
 
     $('input[type="checkbox"]').bootstrapToggle();
+
+    $('.tags').tagsinput();
+
+    $('select').select2({
+        theme: 'bootstrap4'
+    });
 });
