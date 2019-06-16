@@ -10,7 +10,7 @@
   <div class="container-login100">
     <div class="wrap-login100">
       <div class="login100-form-title">
-        <span class="login100-form-title-1">
+        <span class="login100-form-title-1" style="background-image: url(<%= asset_path 'obrero-con-taladro.jpg' %>);">
           Ingresar
         </span>
       </div>
@@ -42,8 +42,11 @@
               ¿Olvidó su contraseña?
             </a>
           </div>
+          
         </div>
-        <%= recaptcha_tags %>
+        <div>
+          <%= recaptcha_tags %>
+        </div>
         <div style="margin-top: 5%;" class="container-login100-form-btn">
         <%= form.submit 'Ingresar', class: 'login100-form-btn' %>
         </div>

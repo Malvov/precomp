@@ -52,6 +52,7 @@ es:
       unlocked: "Tu cuenta ha sido desbloqueada. Inicia sesión para continuar."
   errors:
     messages:
+      taken: "email ya existe"
       already_confirmed: "ya fue confirmada. Intenta ingresar."
       confirmation_period_expired: "necesita ser confirmada dentro de %{period}, por favor pide una nueva"
       expired: "ha expirado, por favor pide una nueva"
