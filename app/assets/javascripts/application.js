@@ -30,7 +30,7 @@ $(document).on('turbolinks:load', function() {
 
     $("input[type='number']").inputSpinner();
 
-    $('input[type="checkbox"]').bootstrapToggle();
+    $('.form-check-input').bootstrapToggle();
 
     $('.tags').tagsinput();
 

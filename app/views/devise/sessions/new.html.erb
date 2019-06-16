@@ -1,20 +1,53 @@
-<h2>Log in</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+<% provide :title, 'Users' %>
+<!--===============================================================================================-->	
+<%= stylesheet_link_tag 'main' %>
+<%= stylesheet_link_tag 'util' %>
+<!--===============================================================================================-->
+
+	
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div class="login100-form-title">
+        <span class="login100-form-title-1">
+          Ingresar
+        </span>
+      </div>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'login100-form validate-for' }) do |form| %>
+        <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+          <span class="label-input100">Email</span>
+          <%= form.email_field :email, class: 'input100' %>
+          <span class="focus-input100"></span>
+        </div>
+          
+        <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+          <span class="label-input100">Password</span>
+          <%= form.password_field :password, class: 'input100' %>
+          <span class="focus-input100"></span>           
+        </div>
+
+        <div class="flex-sb-m w-full p-b-30">
+          <div class="contact100-form-checkbox">
+              
+              <%= form.check_box :remember_me, class: 'input-checkbox100', as: :boolean if devise_mapping.rememberable? %>
+							<label class="label-checkbox100" for="user_remember_me">
+								Remember me
+							</label>
+          </div>
+
+          <div>
+            <a href="#" class="txt1">
+              ¿Olvidó su contraseña?
+            </a>
+          </div>
+        </div>
+        <%= recaptcha_tags %>
+        <div style="margin-top: 5%;" class="container-login100-form-btn">
+        <%= form.submit 'Ingresar', class: 'login100-form-btn' %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

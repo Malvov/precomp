@@ -71,3 +71,7 @@ gem 'google-cloud-storage', '~> 1.8', require: false
 
 # devise
 gem 'devise'
+
+
+# recaptcha
+gem 'recaptcha', require: "recaptcha/rails"
