@@ -62,7 +62,12 @@ gem 'jquery-rails'
 # Favicon
 gem 'rails_real_favicon'
 
-
+# I don't use it though
 gem 'simple_form'
 
+# google cloud storage for active storage
 gem 'google-cloud-storage', '~> 1.8', require: false
+
+
+# devise
+gem 'devise'

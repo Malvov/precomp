@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :products
   resources :providers do
     resources :addresses, path: :branch_offices, as: :branch_offices, except: [:index, :destroy, :show]
