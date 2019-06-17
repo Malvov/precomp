@@ -1,4 +1,4 @@
-class Users::SessionsController < Devise::SessionsController
+class DeviseUsers::SessionsController < Devise::SessionsController
     prepend_before_action :check_captcha, only: [:create] # Change this to be any actions you want to protect.
   
     private
