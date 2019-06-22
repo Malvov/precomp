@@ -1,35 +1,51 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% provide :title, 'Users' %>
+<!--===============================================================================================-->	
+<%= stylesheet_link_tag 'login-main' %>
+<%= stylesheet_link_tag 'login-util' %>
+<!--===============================================================================================-->
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div class="login100-form-title" style="background-image: url(<%= asset_path 'obrero-acero.jpg' %>);">
+        <span class="login100-form-title-1">
+          Editar información
+        </span>
+      </div>
+      <%= render 'devise/shared/error_messages' %>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'login100-form validate-form' }) do |form| %>
+        <%# form.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+        <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+          <span class="label-input100">Email</span>
+          <%= form.email_field :email, class: 'input100', required: true %>
+          <span class="focus-input100"></span>
+        </div>
+          
+        <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+          <span class="label-input100">Nueva contraseña</span>
+          <%= form.password_field :password, class: 'input100', required: true %>
+          <span class="focus-input100"></span>           
+        </div>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+        <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+          <span class="label-input100">Confirmar contraseña</span>
+            <%= form.password_field :password_confirmation, class: 'input100', required: true %>
+          <span class="focus-input100"></span>           
+        </div>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
+
+        <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+          <span class="label-input100">Contraseña actual</span>
+            <%= form.password_field :current_password, class: 'input100', required: true, hint: 'we need your current password in order to save changes' %>
+          <span class="focus-input100"></span>           
+        </div>
+
+        <div style="margin-top: 5%;" class="container-login100-form-btn">
+          <%= form.submit 'Ingresar', class: 'login100-form-btn' %>
+        </div>
+      <% end %>
+      <%= link_to 'Back', :back %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

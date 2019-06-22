@@ -1,1 +1,22 @@
-<h1>User panel</h1>
+<% provide :title, 'Perfil' %>
+<%= stylesheet_link_tag 'profile-main' %>
+
+<%= render 'shared/infobar', color: '#f2f2f2' %>
+
+<div class="card">
+    <div class="card-body">
+        <div class="row" style="height: 20em;">
+            <div class="col-2 col-md-2 col-xs-12 col-sm-12 col-lg-2" style="padding: 5%;">
+                <%= link_to 'Cuenta', edit_user_registration_path %>
+                User links
+                User links
+                User links
+                User links
+                User links
+            </div>
+            <div class="col-10 col-md-10 col-xs-12 col-sm-12 col-lg-10 text-center">
+                Products
+            </div>
+        </div>
+    </div>
+</div>

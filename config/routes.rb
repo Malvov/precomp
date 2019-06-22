@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   devise_for :users, controllers: { sessions: 'devise_users/sessions', confirmations: 'devise_users/confirmations' }
   
-  get '/panel', to: 'users#show', as: :panel
+  get '/profile', to: 'users#show', as: :profile
 
   resources :products
   resources :providers do

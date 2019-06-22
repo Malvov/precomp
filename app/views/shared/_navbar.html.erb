@@ -33,7 +33,9 @@
                     </li>
                 <% end %>
                 <li class="nav-item blue-color">
-                    <a class="nav-link blue-color" href=""><i class="fa fa-user-circle fa-2x"></i></a>
+                    <%= link_to profile_path, class: 'nav-link blue-color' do %>
+                        <i class="fa fa-user-circle fa-2x"></i>
+                    <% end %>
                 </li>
             </ul>
         </div>
