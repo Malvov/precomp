@@ -104,6 +104,12 @@ a, a:hover {
     padding: 2.5%;
 }
 
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
 #input-map {
     width: 600px;
     height: 400px;

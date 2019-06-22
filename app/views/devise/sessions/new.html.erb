@@ -30,10 +30,9 @@
 
         <div class="flex-sb-m w-full p-b-30">
           <div class="contact100-form-checkbox">
-              
               <%= form.check_box :remember_me, class: 'input-checkbox100', as: :boolean if devise_mapping.rememberable? %>
 							<label class="label-checkbox100" for="user_remember_me">
-								Remember me
+								Recordarme
 							</label>
           </div>
 
@@ -42,13 +41,12 @@
               ¿Olvidó su contraseña?
             </a>
           </div>
-          
         </div>
         <div>
           <%= recaptcha_tags %>
         </div>
         <div style="margin-top: 5%;" class="container-login100-form-btn">
-        <%= form.submit 'Ingresar', class: 'login100-form-btn' %>
+          <%= form.submit 'Ingresar', class: 'login100-form-btn' %>
         </div>
       <% end %>
     </div>
