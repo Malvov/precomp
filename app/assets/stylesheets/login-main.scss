@@ -262,6 +262,10 @@ iframe {
   padding: 0 5px;
 }
 
+.input100-no-validation {
+  @extend .input100
+}
+
 .focus-input100 {
   position: absolute;
   display: block;

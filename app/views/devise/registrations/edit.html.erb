@@ -1,92 +1,61 @@
+<% provide :title, 'Usuarios' %>
+<!--===============================================================================================-->	
+<%= stylesheet_link_tag 'login-main' %>
+<%= stylesheet_link_tag 'login-util' %>
+<!--===============================================================================================-->
 
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<div class="card">
-  <img class="card-img-top" src="<%= asset_path 'obrero-cortando.jpg' %>;" size="100%">
-  <div class="card-body">
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+	
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div class="login100-form-title" style="background-image: url(<%= asset_path 'obrero-cortando.jpg' %>);">
+        <span class="login100-form-title-1">
+          Editar información del usuario
+        </span>
+      </div>
       <%= render 'devise/shared/error_messages' %>
-      <%# f.error_notification %>
-
-      <div class="form-group">
-        <label for="name">Nombre</label>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text">
-              <i class="fa fa-id-card"></i>
-            </div>
-          </div>
-          <%= f.text_field :name, class: 'form-control' %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'login100-form validate-form' }) do |form| %>
+        <div class="wrap-input100 validate-input m-b-26" data-validate="Por favor escribir su nombre">
+          <span class="label-input100">Nombres</span>
+          <%= form.text_field :name, class: 'input100' %>
+          <span class="focus-input100"></span>
         </div>
-      </div>
-      
-      <div class="form-group">
-        <label for="email">Email</label>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text">
-              <i class="fa fa-id-card"></i>
-            </div>
-          </div>
-          <%= f.email_field :email, class: 'form-control' %>
+
+        <div class="wrap-input100 validate-input m-b-26" data-validate="Por favor ingresar el email">
+          <span class="label-input100">Email</span>
+          <%= form.email_field :email, class: 'input100' %>
+          <span class="focus-input100"></span>
         </div>
-      </div>
-
-      <div class="form-group">
-        <label for="password">Nueva Contraseña</label>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text">
-              <i class="fa fa-id-card"></i>
-            </div>
-          </div>
-          <%= f.password_field :password,
-            placeholder: "Dejar en blanco si no se va a cambiar",
-            required: false,
-             class: 'form-control' %>
+          
+        <div class="wrap-input100 validate-input m-b-18" data-validate = "Por favor ingresar la contraseña">
+          <span class="label-input100">Password</span>
+          <%= form.password_field :password, class: 'input100-no-validation' %>
+          <span class="focus-input100"></span>           
         </div>
-      </div>
 
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-        <% end %>
-
-
-      <div class="form-group">
-        <label for="password_confirmation">Confirmación de nueva contraseña</label>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text">
-              <i class="fa fa-id-card"></i>
-            </div>
-          </div>
-          <%= f.password_field :password_confirmation,
-            required: false,
-             class: 'form-control' %>
+        <div class="wrap-input100 validate-input m-b-18" data-validate = "Por favor ingresar la contraseña">
+          <span class="label-input100">Password</span>
+          <%= form.password_field :password_confirmation, class: 'input100-no-validation' %>
+          <span class="focus-input100"></span>           
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="current_password">Contraseña actual</label>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text">
-              <i class="fa fa-id-card"></i>
-            </div>
-          </div>
-          <%= f.password_field :current_password,
-            placeholder: "Para confirmar los cambios",
-            required: false,
-             class: 'form-control' %>
+        <div class="wrap-input100 validate-input m-b-18" data-validate = "Por favor ingresar la contraseña">
+          <span class="label-input100">Password</span>
+          <%= form.password_field :current_password, class: 'input100', placeholder: 'Para confirmar sus cambios' %>
+          <span class="focus-input100"></span>           
         </div>
-      </div>
-      
 
-      <div class="form-actions">
-        <%= f.button :submit, "Update" %>
+        <div style="margin-top: 5%;" class="container-login100-form-btn">
+          <%= form.submit 'Ingresar', class: 'login100-form-btn' %>
+        </div>
+      <% end %>
+      <div style="padding: 5%">
+        <%= render 'devise/shared/links' %>
       </div>
-    <% end %>
-
-    <%= link_to "Back", :back %>
+    </div>
   </div>
 </div>
+
+
+
+

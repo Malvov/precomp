@@ -1,4 +1,3 @@
-
 <% provide :title, 'Usuarios' %>
 <!--===============================================================================================-->	
 <%= stylesheet_link_tag 'login-main' %>
@@ -14,15 +13,14 @@
           Ingresar
         </span>
       </div>
-
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'login100-form validate-for' }) do |form| %>
-        <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'login100-form validate-form' }) do |form| %>
+        <div class="wrap-input100 validate-input m-b-26" data-validate="Por favor ingresar el email">
           <span class="label-input100">Email</span>
           <%= form.email_field :email, class: 'input100' %>
           <span class="focus-input100"></span>
         </div>
           
-        <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+        <div class="wrap-input100 validate-input m-b-18" data-validate = "Por favor ingresar la contraseña">
           <span class="label-input100">Password</span>
           <%= form.password_field :password, class: 'input100' %>
           <span class="focus-input100"></span>           
@@ -35,12 +33,6 @@
 								Recordarme
 							</label>
           </div>
-
-          <div>
-            <a href="#" class="txt1">
-              ¿Olvidó su contraseña?
-            </a>
-          </div>
         </div>
         <div>
           <%= recaptcha_tags %>
@@ -49,6 +41,9 @@
           <%= form.submit 'Ingresar', class: 'login100-form-btn' %>
         </div>
       <% end %>
+      <div style="padding: 5%">
+        <%= render 'devise/shared/links' %>
+      </div>
     </div>
   </div>
 </div>

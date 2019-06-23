@@ -16,33 +16,36 @@
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'login100-form validate-form' }) do |form| %>
         <%# form.error_notification %>
 
-        <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+        <div class="wrap-input100 validate-input m-b-26" data-validate="Por favor escribir su nombre">
           <span class="label-input100">Nombres</span>
-          <%= form.text_field :name, class: 'input100', required: true %>
+          <%= form.text_field :name, class: 'input100' %>
           <span class="focus-input100"></span>
         </div>
 
-        <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+        <div class="wrap-input100 validate-input m-b-26" data-validate= "Por favor escribir su email">
           <span class="label-input100">Email</span>
-          <%= form.email_field :email, class: 'input100', required: true %>
+          <%= form.email_field :email, class: 'input100' %>
           <span class="focus-input100"></span>
         </div>
           
-        <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+        <div class="wrap-input100 validate-input m-b-18" data-validate = "Por favor escribir una contraseña">
           <span class="label-input100">Password</span>
-          <%= form.password_field :password, class: 'input100', required: true %>
+          <%= form.password_field :password, class: 'input100' %>
           <span class="focus-input100"></span>           
         </div>
 
-        <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+        <div class="wrap-input100 validate-input m-b-18" data-validate = "Por favor escribir una contraseña">
           <span class="label-input100">Password Confirmation</span>
-          <%= form.password_field :password_confirmation, class: 'input100', required: true %>
+          <%= form.password_field :password_confirmation, class: 'input100' %>
           <span class="focus-input100"></span>           
         </div>
         <div style="margin-top: 5%;" class="container-login100-form-btn">
           <%= form.submit 'Ingresar', class: 'login100-form-btn' %>
         </div>
       <% end %>
+      <div style="padding: 5%">
+        <%= render 'devise/shared/links' %>
+      </div>
     </div>
   </div>
 </div>
