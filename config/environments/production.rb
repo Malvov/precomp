@@ -74,7 +74,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   
   config.action_mailer.smtp_settings = {
-      address: "precomp.com.ni",
+      address: "mail.precomp.com.ni",
       port: 26,
       domain: "precomp.com.ni",
       authentication: "plain",
