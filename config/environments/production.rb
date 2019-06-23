@@ -74,11 +74,10 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   
   config.action_mailer.smtp_settings = {
-      address: "premium47.web-hosting.com",
-      port: 465,
+      address: "precomp.com.ni",
+      port: 26,
       domain: "precomp.com.ni",
       authentication: "plain",
-      enable_starttls_auto: true,
       user_name: Rails.application.credentials.email_user_name.to_s,
       password: Rails.application.credentials.email_password.to_s
   }
