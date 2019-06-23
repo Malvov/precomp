@@ -79,7 +79,8 @@ Rails.application.configure do
       domain: "precomp.com.ni",
       authentication: "plain",
       user_name: Rails.application.credentials.email_user_name.to_s,
-      password: Rails.application.credentials.email_password.to_s
+      password: Rails.application.credentials.email_password.to_s,
+      openssl_verify_mode: 'none'
   }
   
 
