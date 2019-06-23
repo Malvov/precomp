@@ -74,14 +74,15 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   
   config.action_mailer.smtp_settings = {
-      address: "smtp.gmail.com",
-      port: 587,
+      address: "premium47.web-hosting.com",
+      port: 465,
       domain: "precomp.com.ni",
       authentication: "plain",
       enable_starttls_auto: true,
-      user_name: Rails.application.credentials.gmail_user_name.to_s,
-      password: Rails.application.credentials.gmail_password.to_s
+      user_name: Rails.application.credentials.email_user_name.to_s,
+      password: Rails.application.credentials.email_password.to_s
   }
+  
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
