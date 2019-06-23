@@ -1,24 +1,42 @@
-<h2>Change your password</h2>
+<% provide :title, 'Usuarios' %>
+<!--===============================================================================================-->	
+<%= stylesheet_link_tag 'registrations-main' %>
+<%= stylesheet_link_tag 'registrations-util' %>
+<!--===============================================================================================-->
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div class="login100-form-title" style="background-image: url(<%= asset_path 'caja-herramientas-closeup.jpg' %>);">
+        <span class="login100-form-title-1">
+          Recuperar contraseña
+        </span>
+      </div>
+      <%= render 'devise/shared/error_messages' %>
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'login100-form validate-form' }) do |form| %>
+        <%= form.hidden_field :reset_password_token %>
+        <%= form.full_error :reset_password_token %>
 
-  <%= f.input :reset_password_token, as: :hidden %>
-  <%= f.full_error :reset_password_token %>
+        <div class="wrap-input100 validate-input m-b-26" data-validate="Por favor ingresar contraseña">
+          <span class="label-input100">Nueva contraseña</span>
+          <%= form.password_field :password, class: 'input100', placeholder: 'Escribir contraseña' %>
+          <span class="focus-input100"></span>
+        </div>
 
-  <div class="form-inputs">
-    <%= f.input :password,
-                label: "New password",
-                required: true,
-                autofocus: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation, label: "Confirm your new password", required: true %>
+        <div class="wrap-input100 validate-input m-b-26" data-validate="Por favor ingresar contraseña">
+          <span class="label-input100">Confirmar contraseña</span>
+          <%= form.password_field :password_confirmation, class: 'input100', placeholder: 'Escribir contraseña' %>
+          <span class="focus-input100"></span>
+        </div>
+
+        <div style="margin-top: 5%;" class="container-login100-form-btn">
+          <%= form.submit 'Actualizar contraseña', class: 'login100-form-btn' %>
+        </div>
+      <% end %>
+      <div style="padding: 5%">
+        <%= render 'devise/shared/links' %>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

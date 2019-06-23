@@ -1,7 +1,7 @@
 <% provide :title, 'Users' %>
 <!--===============================================================================================-->	
-<%= stylesheet_link_tag 'login-main' %>
-<%= stylesheet_link_tag 'login-util' %>
+<%= stylesheet_link_tag 'registrations-main' %>
+<%= stylesheet_link_tag 'registrations-util' %>
 <!--===============================================================================================-->
 
 <div class="limiter">
@@ -29,13 +29,13 @@
         </div>
           
         <div class="wrap-input100 validate-input m-b-18" data-validate = "Por favor escribir una contraseña">
-          <span class="label-input100">Password</span>
+          <span class="label-input100">Contraseña</span>
           <%= form.password_field :password, class: 'input100' %>
           <span class="focus-input100"></span>           
         </div>
 
         <div class="wrap-input100 validate-input m-b-18" data-validate = "Por favor escribir una contraseña">
-          <span class="label-input100">Password Confirmation</span>
+          <span class="label-input100">Confirmar contraseña</span>
           <%= form.password_field :password_confirmation, class: 'input100' %>
           <span class="focus-input100"></span>           
         </div>
