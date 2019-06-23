@@ -14,11 +14,13 @@
 #  is_active              :boolean          default(FALSE)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  user_id                :bigint
 #
 
 class Provider < ApplicationRecord
     has_many :addresses
     has_many :products
+    belongs_to :user
 
     has_one_attached :logo
 
