@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_23_185128) do
+ActiveRecord::Schema.define(version: 2019_07_06_035903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,8 +58,7 @@ ActiveRecord::Schema.define(version: 2019_06_23_185128) do
     t.string "description"
     t.string "trademark"
     t.string "measurement_unit"
-    t.integer "estimated_delivery_time"
-    t.string "time_span"
+    t.string "estimated_delivery_time"
     t.bigint "provider_id"
     t.decimal "price"
     t.datetime "created_at", null: false

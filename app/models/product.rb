@@ -8,8 +8,7 @@
 #  description             :string
 #  trademark               :string
 #  measurement_unit        :string
-#  estimated_delivery_time :integer
-#  time_span               :string
+#  estimated_delivery_time :string
 #  provider_id             :bigint
 #  price                   :decimal(, )
 #  created_at              :datetime         not null
