@@ -1,0 +1,3 @@
+<% if @product.errors.any? %>
+  $('<%= j render "form", title: "Publicar Producto", product: @product %>').modal();
+<% end %>
