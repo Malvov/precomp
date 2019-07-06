@@ -1,1 +1,4 @@
-$('<%= j render "form", title: "Publicar Producto", product: @product %>').modal();
+$('#modal-container').html('<%= j render "form", title: "Publicar Producto", product: @product %>');
+$('#product-modal').on('shown.bs.modal', function() {
+    $('form[data-validate]').enableClientSideValidations();
+}).modal('show');

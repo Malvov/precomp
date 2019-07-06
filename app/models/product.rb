@@ -19,6 +19,6 @@
 class Product < ApplicationRecord
   belongs_to :provider, optional: true
   belongs_to :category
-  validates_presence_of :name, :tags, :description, :trademark, :measurement_unit, :price
+  validates :name, presence: true
   validates_numericality_of :price, greater_than: 0, message: 'is not a number'
 end

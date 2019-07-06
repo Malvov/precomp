@@ -21,6 +21,7 @@
 //= require bootstrap-datepicker/js/locales/bootstrap-datepicker.es.js
 //= require select2/dist/js/select2
 //= require bootstrap-tagsinput
+//= require rails.validations
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
