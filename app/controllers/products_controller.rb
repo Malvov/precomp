@@ -30,9 +30,11 @@ class ProductsController < ApplicationController
     @product.provider = current_user.provider
     respond_to do |format|
       if @product.save
-        format.html { redirect_to profile_path, notice: 'Product was succesfuly created.' }
+        format.html { redirect_to profile_path, notice: 'Product was successfully updated.' }
+        format.json { render :show, status: :ok, location: @product }
       else
-        format.js
+        format.html { render :new }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -75,7 +77,7 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, 
         :description, :trademark, :measurement_unit, :estimated_delivery_time, :category_id,
-        :price, :time_span, :tags => []
+        :price, :time_span, :currency, :tags => []
       )
     end
 end

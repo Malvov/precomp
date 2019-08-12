@@ -7,7 +7,12 @@
     <div class="card-body">
         <div class="row" style="height: 20em;">
             <div class="col-2 col-md-2 col-xs-12 col-sm-12 col-lg-2">
-                <%= image_tag 'no-img.jpg', class: 'img-fluid rounded-circle' %>
+
+                <% if @provider.logo.nil? %>
+                    <%= image_tag 'no-img.jpg', class: 'img-fluid rounded-circle' %>
+                <% else %>
+                    <%= image_tag @provider.logo, class: 'img-fluid rounded-circle' %>
+                <% end %>                           
                 <% if @provider %>
                     <%= link_to 'Perfil', edit_provider_path(@provider), class: 'blue-color' %>
                 <% end %>
@@ -26,7 +31,7 @@
                 <% end %>
             </div>
             <div class="col-8 col-md-8 col-xs-12 col-sm-12 col-lg-8 text-center">
-                <%= link_to 'Agregar producto', new_product_path, class: 'btn btn-danger my-2 my-sm-0', remote: true %>
+                
             </div>
         </div>
     </div>

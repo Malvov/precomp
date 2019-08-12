@@ -1,58 +1,141 @@
-<div class="modal fade" id="product-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><%= title %></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= simple_form_for(product, remote: true, validate: true) do |form| %>
+<div class="card">
+  <div class="card-body">
+      <%= form_with(model: product, local: true)  do |form| %>
+        <% if product.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-          <div class="form-group">
-            <label for="name">Nombre</label>
-            <%= form.input :name, class: 'form-control', validate: true %>
-          </div>
-
-          <div class="form-group">
-            <label for="description">Descripción</label>
-            <%= form.text_area :description, class: 'form-control' %>
-          </div>
-
-          <div class="form-group">
-            <label for="category_id">Categoría</label>
-            <%= form.collection_select :category_id, Category.all, :id, :description, { include_blank: 'Escoger categoría' }, { class: 'form-control' } %>
-          </div>
-          <div class="form-group">
-            <label for="tags">Etiquetas</label>
-            <%= form.text_field :tags, class: 'tags form-control', multiple: true %>
-          </div>
-          <div class="form-group">
-            <label for="trademark">Marca</label>
-            <%= form.text_field :trademark, class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <label for="measurement_unit">Unidad de medida</label>
-            <%= form.text_field :measurement_unit, class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <label for="estimated_delivery_time">Tiempo de entrega estimado</label>
-            <%= form.text_field :estimated_delivery_time, class: 'form-control' %>
-          </div>
-
-          <div class="form-group">
-            <label for="price">Precio</label>
-            <%= form.number_field :price, class: 'form-control' %>
-          </div>
-
-
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-              <%= form.submit 'Guardar', class: 'btn btn-success' %>
+            <ul>
+            <% product.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
           </div>
         <% end %>
-      </div>
-    </div>
-  </div>
+        <%# name and category %>
+        <div class="row">
+          <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fa fa-wrench"></i>
+                  </div>
+                </div>
+                <%= form.text_field :name, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+              <label for="category_id">Categoría</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fa fa-bars"></i>
+                  </div>
+                </div>
+                <%= form.collection_select :category_id, Category.all, :id, :description, { include_blank: 'Escoger categoría' }, { class: 'form-control' } %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <%# description and trademark %>
+        <div class="row">
+            <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                <div class="form-group">
+                   <label for="description">Descripción</label>
+                   <div class="input-group">
+                        <div class="input-group-prepend">
+                              <div class="input-group-text">
+                                  <i class="fa fa-align-left">                                
+                                  </i>
+                              </div>
+                        </div>
+                        <%= form.text_area :description, class: 'form-control' %>
+                   </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                <div class="form-group">
+                   <label for="trademark">Marca</label>
+                   <div class="input-group">
+                        <div class="input-group-prepend">
+                              <div class="input-group-text">
+                                  <i class="fa fa-trademark">                                
+                                  </i>
+                              </div>
+                        </div>
+                        <%= form.text_field :trademark, class: 'form-control' %>
+                   </div>
+                </div>
+            </div>
+        </div>
+
+        <%# measurement_unit, price and currency %>
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                <div class="form-group">
+                   <label for="measurement_unit">Unidad de medida</label>
+                   <div class="input-group">
+                      <div class="input-group-prepend">
+                         <div class="input-group-text">
+                             <i class="fa fa-balance-scale"></i>
+                         </div>
+                      </div>
+                      <%= form.text_field :measurement_unit, class: 'form-control' %>
+                   </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                <div class="row">
+                   <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                      <div class="form-group">
+                        <label for="price">Precio</label>
+                        <div class="input-group">
+                            <input name="product[price]" type="number" value="<%= form.object.price %>" min="0" />
+                        </div>
+                      </div>
+                   </div>
+                   <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                      <div class="form-group">
+                         <label for="currency">Moneda</label>
+                          <div class="input-group">
+                              <div class="input-group-prepend">
+                                  <div class="input-group-text">
+                                       <i class="fa fa-money">                                
+                                       </i>
+                                  </div>
+                              </div>
+                              <%= form.text_field :currency, class: 'form-control' %>
+                          </div>
+                      </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                <div class="form-group">
+                    <label for="tags">Etiquetas</label>
+                    <%# <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fa fa-at"></i>
+                            </div>
+                        </div>
+                    </div> %>
+                    <%= form.text_field :tags, class: 'tags form-control', multiple: true %>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <%= form.submit 'Guardar', class: 'btn btn-success' %>
+        </div>
+      <% end %>
+   </div>
 </div>

@@ -14,11 +14,12 @@
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #  category_id             :bigint
+#  currency                :string
 #
 
 class Product < ApplicationRecord
-  belongs_to :provider, optional: true
+  belongs_to :provider
   belongs_to :category
-  validates :name, presence: true
+  validates_presence_of :name, :description, :trademark, :currency
   validates_numericality_of :price, greater_than: 0, message: 'is not a number'
 end
