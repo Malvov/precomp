@@ -1,0 +1,21 @@
+<table id="products-table" class="table hover">
+
+    <thead>
+        <tr>
+           <th class="blue-color">Código</th>
+           <th class="blue-color">Categoría</th>
+           <th class="blue-color">Producto</th>
+           <th class="blue-color">Marca</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @provider.products.each do |product| %>
+            <tr style="cursor: pointer;">
+                <td class="product-id"><%= product.id %></td>
+                <td><%= product.category.description %></td>
+                <td><%= product.name %></td>
+                <td><%= product.trademark %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

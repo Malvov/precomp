@@ -1,11 +1,12 @@
 <% provide :title, 'Perfil' %>
+<% has_provider = !@provider.nil? %>
 <%= stylesheet_link_tag 'profile-main' %>
 
 <%= render 'shared/infobar', color: '#f2f2f2' %>
 
 <div class="card">
     <div class="card-body">
-        <div class="row" style="height: 20em;">
+        <div class="row" style="height: 25em;">
             <div class="col-2 col-md-2 col-xs-12 col-sm-12 col-lg-2">
 
                 <% if @provider.logo.nil? %>
@@ -23,16 +24,45 @@
                 <br>
                 <%= link_to 'Cuenta', edit_user_registration_path, class: 'blue-color' %>
             </div>
-            <div class="col-2 col-md-2 col-xs-12 col-sm-12 col-lg-2">
-                <% if @provider %>
-                    <p><%= @provider.name %></p>
+            <div class="col-10 col-md-10 col-xs-12 col-sm-12 col-lg-10 text-center">
+                <h3>
+                    <% if has_provider %>
+                        <%= @provider.name %>
+                    <% else %>
+                        <%= @user.name %>
+                    <% end %>
+                </h3>
+
+                <% if has_provider %>
+                        <%= render 'products' %>
                 <% else %>
-                    <p><%= @user.name %></p>
+                        <h3>Anunciar sus productos aquí</h3>
                 <% end %>
-            </div>
-            <div class="col-8 col-md-8 col-xs-12 col-sm-12 col-lg-8 text-center">
                 
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mx-auto col-8" style="background-color: #fff; margin-top: 2%;">
+    <div class="card-body">
+       <div class="row">
+       
+           <div class="col-md-8 col-lg-8 col-xs-12 col-sm-12">
+                Imagen producto
+           </div>
+           <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+                Descripción producto
+           </div>
+       </div>
+    </div>
+</div>
+
+<div class="row" >
+    <div class="col-12" style="height: 25%; background-color: #c9c9c9; margin-top: 2%; border-radius: 0.5em;">
+        <div style="padding: 0.5%; font-weight: 400;">
+            <%= image_tag 'anuncios-ofertas.png', size: '73x47' %>
+            ¿Has visto nuestras ofertas especiales, nuevos proveedores, productos y espacios para anunciarse?
         </div>
     </div>
 </div>
