@@ -18,3 +18,14 @@ const getProduct = async (productId) => {
     }    
 }
 
+const getProductImages = async (productId) => {
+    try {
+        let productImages= await $.getJSON('/product_images', { product_id: productId });
+
+        return productImages;
+        
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+

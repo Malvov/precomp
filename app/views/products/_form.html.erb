@@ -133,6 +133,31 @@
             </div>
         </div>
 
+      <div class="row">
+        <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
+          <%= form.label :images, class: 'btn btn-primary' do %>
+            Buscar imágenes del producto 
+            <span style="display: none;">
+                <%= form.file_field :images, multiple: true, accept:'image/png' %>
+            </span>           
+          <% end %>
+          
+        </div>
+        <div class="col-md-10 col-lg-10 col-sm-12 col-xs-12">
+          <% if form.object.new_record? || !form.object.images.attached? %>
+            <img class="img-fuild" id="img-prev" src="#" alt="" />
+          <% else %>
+            <% form.object.images.each do |image| %>
+                <%= image_tag image, size: '180x180', class: 'img-fluid' %>
+                <%= link_to remove_attachment_product_path(image), class: 'btn btn-danger', method: :delete do %>
+                   <span class="fa fa-trash-o"></span>
+                <% end %>
+            <% end %>
+            <%# image_tag form.object.logo, size: '180x180', id: 'img-prev', class: 'img-fuild' %>
+          <% end %>
+        </div>
+      </div>
+
         <div class="actions">
             <%= form.submit 'Guardar', class: 'btn btn-success' %>
         </div>

@@ -39,7 +39,7 @@ $(document).on('turbolinks:load', function() {
         theme: 'bootstrap4'
     });
 
-    $('#products-table').DataTable({
+    $('.datatable').DataTable({
         "lengthMenu": [[5], [5]],
         'language': {
             "sProcessing":     "Procesando...",

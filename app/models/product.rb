@@ -22,4 +22,6 @@ class Product < ApplicationRecord
   belongs_to :category
   validates_presence_of :name, :description, :trademark, :currency
   validates_numericality_of :price, greater_than: 0, message: 'is not a number'
+
+  has_many_attached :images 
 end

@@ -4,7 +4,14 @@ Rails.application.routes.draw do
   
   get '/profile', to: 'users#show', as: :profile
 
-  resources :products
+  resources :products do
+    member do
+      delete :remove_attachment
+    end
+  end
+
+  resources :product_images, only: :index
+
   resources :providers do
     resources :addresses, path: :branch_offices, as: :branch_offices, except: [:index, :destroy, :show]
   end

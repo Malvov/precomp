@@ -1,0 +1,1 @@
+json.extract! product_image, :url

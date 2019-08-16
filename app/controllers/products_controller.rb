@@ -44,7 +44,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to profile_path, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
@@ -63,6 +63,14 @@ class ProductsController < ApplicationController
     end
   end
 
+  def remove_attachment
+    @image = ActiveStorage::Attachment.find params[:id]
+    @product = @image.record
+    @image.purge
+
+    redirect_to edit_product_path(@product)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -77,7 +85,7 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, 
         :description, :trademark, :measurement_unit, :estimated_delivery_time, :category_id,
-        :price, :time_span, :currency, :tags => []
+        :price, :time_span, :currency, tags: [], images: []
       )
     end
 end
