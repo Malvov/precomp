@@ -1,8 +1,10 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  
+  before_action :set_currency, only: :edit
 
+  include ActionView::Helpers::NumberHelper
+  
   # GET /products
   # GET /products.json
   def index
@@ -12,6 +14,11 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    # :open_mouth:
+    product = @product.as_json
+    product['category_description'] = @product.category.description
+    product['formatted_price'] = formatted_price @product
+    @product = product
   end
 
   # GET /products/new
@@ -77,8 +84,13 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
     end
 
-    def set_time_spans
-      @time_spans = Product::TIME_SPANS
+    def set_currency
+      @currency = Product::CURRENCY
+    end
+
+    def formatted_price product
+      return "#{ number_to_currency product.price, locale: 'es-NI' }" if product.currency == 'Córdoba'
+      "#{ number_to_currency product.price }"
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

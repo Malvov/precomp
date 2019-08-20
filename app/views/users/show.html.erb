@@ -6,7 +6,7 @@
 
 <div class="card">
     <div class="card-body">
-        <div class="row" style="height: 25em;">
+        <div class="row" style="height: 26em;">
             <div class="col-2 col-md-2 col-xs-12 col-sm-12 col-lg-2">
 
                 <% if @provider.logo.nil? %>
@@ -48,11 +48,29 @@
     <div class="card-body">
        <div class="row">
        
-           <div id="images" class="col-md-8 col-lg-8 col-xs-12 col-sm">
-               <img id="product-image" src="<%= asset_path 'no-img.jpg' %>" alt="" width='180' height='180'>
+           <div id="images" class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+               <img id="product-image" src="<%= asset_path 'no-img.jpg' %>" alt="" width="180" height="180">
            </div>
-           <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
-                Descripción producto
+           <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                <div class="row">
+                    <div class="col-12">
+                        <p><span class="font-weight-bold" id="product-name">Producto</span> | <span id="product-category">Categoría del producto</span></p>
+                    </div>
+                    <div class="col-12">
+                        <h5 id="product-description">Descripción del producto</h5>
+                    </div>
+                    <div class="col-12">
+                        <p class="blue-color">
+                            <span id="product-price">$0.00 |</span>
+                            <span id="product-estimated-delivery-time">Inmediata |</span>
+                            <span id="product-measurement-unit">Kg |</span>
+                            <span id="product-trademark">Marca </span>                       
+                        </p>
+                    </div>
+                    <div class="col-12">
+                        <a href="#" id="edit-product-path" class="btn btn-danger">Editar producto</a>
+                    </div>
+                </div>
            </div>
        </div>
     </div>

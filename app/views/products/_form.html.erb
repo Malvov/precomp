@@ -109,7 +109,9 @@
                                        </i>
                                   </div>
                               </div>
-                              <%= form.text_field :currency, class: 'form-control' %>
+                              <%= form.collection_select :currency,              
+                              @currency, :to_s, :to_s, 
+                              { include_blank: 'Escoger moneda' }, { class: 'form-control' } %>
                           </div>
                       </div>
                    </div>

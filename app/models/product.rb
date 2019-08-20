@@ -18,10 +18,15 @@
 #
 
 class Product < ApplicationRecord
+  # what a really bad practice omg
+
   belongs_to :provider
   belongs_to :category
   validates_presence_of :name, :description, :trademark, :currency
   validates_numericality_of :price, greater_than: 0, message: 'is not a number'
 
-  has_many_attached :images 
+  has_many_attached :images
+  
+  CURRENCY = ['Dólar', 'Córdoba']
+
 end
