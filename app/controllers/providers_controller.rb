@@ -27,6 +27,7 @@ class ProvidersController < ApplicationController
   # POST /providers.json
   def create
     @provider = Provider.new(provider_params)
+    @provider.user = current_user
 
     respond_to do |format|
       if @provider.save
@@ -71,8 +72,8 @@ class ProvidersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def provider_params
-      params.require(:provider).permit(:name, :contact, :max_product_quantity, 
-        :subscription_end_date, :phone, :personal_contact, :administrative_contact, 
-        :email, :webpage_link, :address, :is_active, :logo)
+      params.require(:provider).permit(:name, :contact, 
+        :phone, :personal_contact, :administrative_contact, 
+        :email, :webpage_link, :address, :logo)
     end
 end

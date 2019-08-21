@@ -9,20 +9,21 @@
         <div class="row" style="height: 26em;">
             <div class="col-2 col-md-2 col-xs-12 col-sm-12 col-lg-2">
 
-                <% if @provider.logo.nil? %>
+                <% unless has_provider %>
                     <%= image_tag 'no-img.jpg', class: 'img-fluid rounded-circle' %>
                 <% else %>
                     <%= image_tag @provider.logo, class: 'img-fluid rounded-circle' %>
-                <% end %>                           
+                <% end %>
+
                 <% if @provider %>
                     <%= link_to 'Perfil', edit_provider_path(@provider), class: 'blue-color' %>
                 <% end %>
                 <br>
                 <%= link_to 'Cuenta', edit_user_registration_path, class: 'blue-color' %>
                 <br>
-                <%= link_to 'Cuenta', edit_user_registration_path, class: 'blue-color' %>
+                <%= link_to 'Mi lista', '#', class: 'blue-color' %>
                 <br>
-                <%= link_to 'Cuenta', edit_user_registration_path, class: 'blue-color' %>
+                <%# link_to 'Cuenta', edit_user_registration_path, class: 'blue-color' %>
             </div>
             <div class="col-10 col-md-10 col-xs-12 col-sm-12 col-lg-10 text-center">
                 <h3>
@@ -68,7 +69,13 @@
                         </p>
                     </div>
                     <div class="col-12">
-                        <a href="#" id="edit-product-path" class="btn btn-danger">Editar producto</a>
+                        <% label = has_provider ? { href: '#', message: 'Editar producto' } : 
+                        
+                        { href: '/providers/new', message: '¡Anuncie con nosotros ahora!' } %>
+
+                        <a href="<%= label[:href] %>" id="edit-product-path" class="btn btn-danger">
+                            <%= label[:message] %>
+                        </a>
                     </div>
                 </div>
            </div>

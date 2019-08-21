@@ -18,8 +18,6 @@
 #
 
 class Product < ApplicationRecord
-  # what a really bad practice omg
-
   belongs_to :provider
   belongs_to :category
   validates_presence_of :name, :description, :trademark, :currency

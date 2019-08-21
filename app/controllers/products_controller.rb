@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :set_currency, only: :edit
 
+  # real bad practice hours
   include ActionView::Helpers::NumberHelper
   
   # GET /products
@@ -75,7 +76,7 @@ class ProductsController < ApplicationController
     @product = @image.record
     @image.purge
 
-    redirect_to edit_product_path(@product)
+    redirect_to edit_product_path(@product), notice: 'Imagen removida correctamente.'
   end
 
   private
