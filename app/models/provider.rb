@@ -25,7 +25,6 @@ class Provider < ApplicationRecord
     has_one_attached :logo
 
     validates_presence_of :name, :phone, :personal_contact, :administrative_contact, :email
-    validates_numericality_of :max_product_quantity
 
 #     after_save :scale_image
 

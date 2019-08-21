@@ -10,6 +10,7 @@ class AddressesController < ApplicationController
 
   def new
     @address = Address.new provider_id: params[:provider_id]
+    authorize! :create, @address
   end
 
   def create
@@ -27,10 +28,10 @@ class AddressesController < ApplicationController
   end
 
   def edit
+    authorize! :update, @address
   end
 
   def update
-    binding.pry
     respond_to do |format|
       if @address.update(address_params)
         format.html { redirect_to provider_path(@address.provider), notice: 'Address was successfully updated.' }

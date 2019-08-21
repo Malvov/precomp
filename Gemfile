@@ -78,3 +78,6 @@ gem 'recaptcha', require: "recaptcha/rails"
 
 # client side validations
 gem 'client_side_validations'
+
+# cancancan
+gem 'cancancan'

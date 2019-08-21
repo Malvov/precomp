@@ -17,6 +17,8 @@
 
                 <% if @provider %>
                     <%= link_to 'Perfil', edit_provider_path(@provider), class: 'blue-color' %>
+                    <br>
+                    <%= link_to 'Sucursales', provider_branch_offices_path(@provider), class: 'blue-color' %>
                 <% end %>
                 <br>
                 <%= link_to 'Cuenta', edit_user_registration_path, class: 'blue-color' %>
@@ -35,7 +37,11 @@
                 </h3>
 
                 <% if has_provider %>
-                        <%= render 'products' %>
+                        <% if @provider.is_active? %>
+                            <%= render 'products' %>
+                        <% else %>
+                            <h4>Su cuenta debe ser activada por un administrador.</h4>
+                        <% end %>
                 <% else %>
                         <h3>Anunciar sus productos aquí</h3>
                 <% end %>
@@ -63,15 +69,24 @@
                     <div class="col-12">
                         <p class="blue-color">
                             <span id="product-price">$0.00 |</span>
-                            <span id="product-estimated-delivery-time">Inmediata |</span>
+                            <span id="product-estimated-delivery-time">Entrega |</span>
                             <span id="product-measurement-unit">Kg |</span>
                             <span id="product-trademark">Marca </span>                       
                         </p>
                     </div>
                     <div class="col-12">
-                        <% label = has_provider ? { href: '#', message: 'Editar producto' } : 
-                        
-                        { href: '/providers/new', message: '¡Anuncie con nosotros ahora!' } %>
+                        <% label = Hash.new %>
+            
+                        <% if has_provider %>
+                            <% label[:href] = '#'%>
+                            <% if @provider.is_active? %>
+                                <% label[:message] = 'Editar producto' %>
+                            <% else %>
+                                <% label[:message] = 'Su cuenta debe ser activada por un administrador' %>
+                            <% end %>
+                        <% else %>
+                            <% label = { href: '/providers/new', message: '¡Anuncie con nosotros ahora!' } %>
+                        <% end %>
 
                         <a href="<%= label[:href] %>" id="edit-product-path" class="btn btn-danger">
                             <%= label[:message] %>

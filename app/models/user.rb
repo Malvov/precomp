@@ -14,6 +14,7 @@
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
 #  name                   :string
+#  role                   :integer
 #
 
 class User < ApplicationRecord
@@ -21,6 +22,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
+
+  enum role: { guest: 0, provider: 1, admin: 2 }
 
   has_one :provider
   

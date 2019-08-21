@@ -16,11 +16,16 @@ class ProvidersController < ApplicationController
 
   # GET /providers/new
   def new
-    @provider = Provider.new
+    unless current_user.provider.nil?
+      redirect_to profile_path, notice: 'No se puede completar esta acción.'    
+    else
+      @provider = Provider.new
+    end
   end
 
   # GET /providers/1/edit
   def edit
+      authorize! :update, @provider
   end
 
   # POST /providers
@@ -31,7 +36,7 @@ class ProvidersController < ApplicationController
 
     respond_to do |format|
       if @provider.save
-        format.html { redirect_to @provider, notice: 'Provider was successfully created.' }
+        format.html { redirect_to profile_path, notice: 'Espere la activación de su cuenta por un administrador.' }
         format.json { render :show, status: :created, location: @provider }
       else
         format.html { render :new }
@@ -45,7 +50,7 @@ class ProvidersController < ApplicationController
   def update
     respond_to do |format|
       if @provider.update(provider_params)
-        format.html { redirect_to profile_path, notice: 'Provider was successfully updated.' }
+        format.html { redirect_to profile_path, notice: 'Sus datos fueron correctamente actualizados.' }
         format.json { render :show, status: :ok, location: @provider }
       else
         format.html { render :edit }
