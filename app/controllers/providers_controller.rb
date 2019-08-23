@@ -1,6 +1,7 @@
 class ProvidersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_provider, only: [:show, :edit, :update, :destroy]
+  #load_and_authorize_resource except: :new
 
   # GET /providers
   # GET /providers.json
@@ -17,7 +18,7 @@ class ProvidersController < ApplicationController
   # GET /providers/new
   def new
     unless current_user.provider.nil?
-      redirect_to profile_path, notice: 'No se puede completar esta acción.'    
+      redirect_to profile_path, notice: 'No se puede completar esta acción. Usted ya tiene una cuenta de proveedor.'    
     else
       @provider = Provider.new
     end
@@ -25,7 +26,7 @@ class ProvidersController < ApplicationController
 
   # GET /providers/1/edit
   def edit
-      authorize! :update, @provider
+    authorize! :edit, @provider
   end
 
   # POST /providers

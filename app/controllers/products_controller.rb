@@ -1,10 +1,8 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :set_currency, only: :edit
-
-  # real bad practice hours
-  include ActionView::Helpers::NumberHelper
+  load_and_authorize_resource except: [:index, :show, :remove_attachment]
   
   # GET /products
   # GET /products.json
@@ -16,21 +14,17 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     # :open_mouth:
-    product = @product.as_json
-    product['category_description'] = @product.category.description
-    product['formatted_price'] = formatted_price @product
-    @product = product
+    @product_as_json = @product.as_json
+    @product_as_json['category_description'] = @product.category.description
   end
 
   # GET /products/new
   def new
     @product = Product.new
-    authorize! :create, @product
   end
 
   # GET /products/1/edit
   def edit
-    authorize! :edit, @product
   end
 
   # POST /products
@@ -38,7 +32,6 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new product_params
     @product.provider = current_user.provider
-    authorize! :create, @product
     respond_to do |format|
       if @product.save
         format.html { redirect_to profile_path, notice: 'Product was successfully updated.' }
@@ -53,7 +46,6 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    authorize! :update, @product
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to profile_path, notice: 'Product was successfully updated.' }
@@ -68,7 +60,6 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    authorize! :destroy, @product
     @product.destroy
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
@@ -92,11 +83,6 @@ class ProductsController < ApplicationController
 
     def set_currency
       @currency = Product::CURRENCY
-    end
-
-    def formatted_price product
-      return "#{ number_to_currency product.price, locale: 'es-NI' }" if product.currency == 'Córdoba'
-      "#{ number_to_currency product.price }"
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

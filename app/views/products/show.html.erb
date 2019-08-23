@@ -1,37 +1,26 @@
 <% provide :title, @product.name %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
 
-<p>
-  <strong>Tag:</strong>
-  <%= @product.tags %>
-</p>
+<%= render 'shared/infobar', color: 'black' %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Trademark:</strong>
-  <%= @product.trademark %>
-</p>
-
-<p>
-  <strong>Measurement unit:</strong>
-  <%= @product.measurement_unit %>
-</p>
-
-<p>
-  <strong>Estimated delivery time:</strong>
-  <%= @product.estimated_delivery_time %>
-</p>
-
-
-
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<div class="col-8 mx-auto">
+      <div class="row">
+          <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+              <% if @product.images.count == 0 %>
+                  <%= image_tag 'no-img.jpg', class: 'img-fluid' %>
+              <% else %>
+                  <%= image_tag @product.images.first, class: 'img-fluid' %>
+              <% end %>
+          </div>
+          <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12" style="background-color: #211b23; height: 15em;">
+              <div class="col-12">
+                  <h3 class="product-text text-center"><%= @product.name %></h3>
+              </div>
+              <div class="col-4 mx-auto">
+                   <div class="alert alert-primary">
+                       <%= formatted_price @product %>
+                   </div>
+              </div>
+          </div>
+      </div>
+</div>
