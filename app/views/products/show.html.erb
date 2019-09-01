@@ -6,21 +6,88 @@
 <div class="col-8 mx-auto">
       <div class="row">
           <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-              <% if @product.images.count == 0 %>
-                  <%= image_tag 'no-img.jpg', class: 'img-fluid' %>
-              <% else %>
-                  <%= image_tag @product.images.first, class: 'img-fluid' %>
-              <% end %>
+              <%= product_image @product %>
           </div>
           <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12" style="background-color: #211b23; height: 15em;">
               <div class="col-12">
-                  <h3 class="product-text text-center"><%= @product.name %></h3>
+                  <h3 class="product-text text-center">
+                      <%= @product.name %>
+                      <% if can? :edit, @product %>
+                          <%= link_to 'Editar', edit_product_path(@product), class: 'btn btn-danger' %>
+                      <% end %>
+                  </h3>
               </div>
               <div class="col-4 mx-auto">
-                   <div class="alert alert-primary">
-                       <%= formatted_price @product %>
-                   </div>
+                   <h4>
+                       <span class="badge badge-info">
+                           <%= formatted_price @product %>
+                       </span>
+                   </h4>
+              </div>
+              <div class="col-12">
+                  <h4 class="product-text">
+                      Unidad de medida: <%= @product.measurement_unit %>
+                  </h4>
+              </div>
+              <div class="col-12">
+                  <h4 class="product-text">
+                      Marca: <%= @product.trademark %>
+                  </h4>
+              </div>
+              <div class="col-12">
+                  <h4 class="product-text">
+                      Tiempo de entrega: <%= @product.estimated_delivery_time %>
+                  </h4>
+              </div>
+              <div class="col-12">
+                  <h5 class="product-text">
+                      Proveedor: <%= link_to @product.provider.name, provider_path(@product.provider), class: 'btn btn-primary' %>
+                  </h5>
               </div>
           </div>
       </div>
+</div>
+
+<div class="row" >
+    <div class="col-12" style="height: 25%; background-color: white; margin-top: 2%; border-radius: 0.5em;">
+        <div style="padding: 1%;">
+          <ul class="nav justify-content-center nav-tabs" id="providerTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="home" aria-selected="false">
+                  Descripción a detalle
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="products-tab" data-toggle="tab" href="#products" role="tab" aria-controls="profile" aria-selected="true">
+                  Productos asociados
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="offers-tab" data-toggle="tab" href="#offers" role="tab" aria-controls="contact" aria-selected="false">
+                  Otras ofertas
+              </a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myProviderTabContent">
+            <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+              <div class="row">
+                <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                    <%= product_image @product %>
+                </div>
+                <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                    <div class="col-8 mx-auto" style="padding-top: 10%;">
+                        <h4><%= @product.description %></h4>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="products" role="tabpanel" aria-labelledby="products-tab">
+                <%= render 'related_products' %>
+            </div>
+            <div class="tab-pane fade" id="offers" role="tabpanel" aria-labelledby="offers-tab">
+                <%= render 'offers' %>
+            </div>
+          </div>
+        </div>
+    </div>
 </div>
