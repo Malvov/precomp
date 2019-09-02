@@ -39,6 +39,12 @@ $(document).on('turbolinks:load', function() {
         theme: 'bootstrap4'
     });
 
+    $('.slider').bxSlider({
+        mode: 'fade',
+        adaptiveHeight: true,
+        slideWidth: 400
+    });
+
     $('.datatable').DataTable({
         "lengthMenu": [[5], [5]],
         'language': {

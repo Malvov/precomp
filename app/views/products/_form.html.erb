@@ -137,13 +137,8 @@
 
       <div class="row">
         <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
-          <%= form.label :images, class: 'btn btn-primary' do %>
-            Buscar imágenes del producto 
-            <span style="display: none;">
-                <%= form.file_field :images, multiple: true, accept:'image/png' %>
-            </span>           
-          <% end %>
-          
+            <label for="product_images">Buscar imágenes del producto</label> 
+            <%= form.file_field :images, multiple: true, accept:'image/png' %>         
         </div>
         <div class="col-md-10 col-lg-10 col-sm-12 col-xs-12">
           <% if form.object.new_record? || !form.object.images.attached? %>

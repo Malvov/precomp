@@ -37,4 +37,8 @@ class Product < ApplicationRecord
     provider.products.where.not(id: id).order('random()') 
   end
 
+  def has_images?
+    images.count > 0
+  end
+
 end

@@ -71,12 +71,22 @@
           <div class="tab-content" id="myProviderTabContent">
             <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
               <div class="row">
-                <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                    <%= product_image @product %>
+                <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12 mx-auto" style="padding-top: 2%;">
+                    <% if @product.has_images? %>
+                        <div class="slider">
+                            <% @product.images.each do |image| %>
+                                <div>
+                                    <%= image_tag image, size: '180x180!' %>
+                                </div>
+                            <% end %>
+                        </div>
+                    <% else %>
+                        <%= image_tag 'no-img.jpg', class: 'img-fluid' %>
+                    <% end %>
                 </div>
-                <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
                     <div class="col-8 mx-auto" style="padding-top: 10%;">
-                        <h4><%= @product.description %></h4>
+                        <p style="font-size: 1em;"><%= @product.description %></p>
                     </div>
                 </div>
               </div>

@@ -5,7 +5,7 @@ module ProductsHelper
     end
 
     def product_image product
-        if product.images.count == 0
+        unless product.has_images?
             image_tag 'no-img.jpg', class: 'img-fluid'
         else
             image_tag product.images.first, class: 'img-fluid'
