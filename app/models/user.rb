@@ -14,7 +14,7 @@
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
 #  name                   :string
-#  role                   :integer
+#  role                   :integer          default("guest")
 #
 
 class User < ApplicationRecord

@@ -5,7 +5,7 @@
 #  id                     :bigint           not null, primary key
 #  name                   :string
 #  max_product_quantity   :integer          default(0)
-#  subscription_end_date  :date
+#  subscription_end_date  :datetime
 #  phone                  :string
 #  personal_contact       :string
 #  administrative_contact :string
