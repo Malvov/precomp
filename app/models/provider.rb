@@ -26,6 +26,14 @@ class Provider < ApplicationRecord
 
     validates_presence_of :name, :phone, :personal_contact, :administrative_contact, :email
 
+    after_save :set_user_as_provider
+    
+    private
+
+    def set_user_as_provider
+        user.update role: is_active? ? :provider : :guest
+    end
+
 #     after_save :scale_image
 
 #   def scale_image

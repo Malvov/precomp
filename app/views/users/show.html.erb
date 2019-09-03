@@ -9,7 +9,7 @@
         <div class="row" style="height: 26em;">
             <div class="col-2 col-md-2 col-xs-12 col-sm-12 col-lg-2">
 
-                <% unless has_provider %>
+                <% if !has_provider || !@provider.logo.attached? %>
                     <%= image_tag 'no-img.jpg', class: 'img-fluid rounded-circle' %>
                 <% else %>
                     <%= image_tag @provider.logo, class: 'img-fluid rounded-circle' %>
@@ -37,7 +37,7 @@
                 </h3>
 
                 <% if has_provider %>
-                        <% if @provider.is_active? %>
+                        <% if @provider.is_active? && @user.provider? %>
                             <%= render 'products' %>
                         <% else %>
                             <h4>Su cuenta debe ser activada por un administrador.</h4>

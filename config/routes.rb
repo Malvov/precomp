@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: { sessions: 'devise_users/sessions', confirmations: 'devise_users/confirmations' }
   
   get '/profile', to: 'users#show', as: :profile

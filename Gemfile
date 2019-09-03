@@ -81,3 +81,7 @@ gem 'client_side_validations'
 
 # cancancan
 gem 'cancancan'
+
+
+# rails_admin
+gem 'rails_admin', '~> 2.0'

@@ -15,6 +15,8 @@ class Ability
       can :manage, Address, provider: { user_id: user.id }
       can :update, Provider, user_id: user.id
     elsif user.admin?
+      can :access, :rails_admin   # grant access to rails_admin
+      can :read, :dashboard       # grant access to the dashboard
       can :manage, :all
     end
     # Define abilities for the passed in user here. For example:
