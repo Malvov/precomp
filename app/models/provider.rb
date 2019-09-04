@@ -15,19 +15,26 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  user_id                :bigint
+#  slug                   :string
 #
 
 class Provider < ApplicationRecord
+    extend FriendlyId
+    friendly_id :name, use: :history
+
     has_many :addresses
     has_many :products
     belongs_to :user
-
     has_one_attached :logo
 
     validates_presence_of :name, :phone, :personal_contact, :administrative_contact, :email
+    validates_uniqueness_of :name
 
     after_save :set_user_as_provider
-    
+    before_save :set_slug
+
+    scope :actives, -> { where is_active: true }
+
     private
 
     def set_user_as_provider

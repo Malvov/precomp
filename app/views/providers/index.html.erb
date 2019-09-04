@@ -5,14 +5,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Max product quantity</th>
-      <th>Subscription end date</th>
-      <th>Phone</th>
-      <th>Personal contact</th>
-      <th>Administrative contact</th>
-      <th>Email</th>
-      <th>Webpage link</th>
-      <th>Is active</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,14 +13,6 @@
     <% @providers.each do |provider| %>
       <tr>
         <td><%= provider.name %></td>
-        <td><%= provider.max_product_quantity %></td>
-        <td><%= provider.subscription_end_date %></td>
-        <td><%= provider.phone %></td>
-        <td><%= provider.personal_contact %></td>
-        <td><%= provider.administrative_contact %></td>
-        <td><%= provider.email %></td>
-        <td><%= provider.webpage_link %></td>
-        <td><%= provider.is_active %></td>
         <td><%= link_to 'Show', provider %></td>
         <td><%= link_to 'Edit', edit_provider_path(provider) %></td>
         <td><%= link_to 'Destroy', provider, method: :delete, data: { confirm: 'Are you sure?' } %></td>

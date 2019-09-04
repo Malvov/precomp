@@ -94,6 +94,8 @@ GEM
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.10.0)
+    friendly_id (5.2.5)
+      activerecord (>= 4.0.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     google-api-client (0.30.1)
@@ -334,6 +336,7 @@ DEPENDENCIES
   client_side_validations
   coffee-rails (~> 4.2)
   devise
+  friendly_id (~> 5.2.4)
   google-cloud-storage (~> 1.8)
   jbuilder (~> 2.5)
   jquery-rails

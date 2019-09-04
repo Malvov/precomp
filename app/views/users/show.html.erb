@@ -15,7 +15,7 @@
                     <%= image_tag @provider.logo, class: 'img-fluid rounded-circle' %>
                 <% end %>
 
-                <% if @provider %>
+                <% if @provider && @provider.is_active? %>
                     <%= link_to 'Perfil', edit_provider_path(@provider), class: 'blue-color' %>
                     <br>
                     <%= link_to 'Sucursales', provider_branch_offices_path(@provider), class: 'blue-color' %>

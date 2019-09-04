@@ -6,13 +6,14 @@ class ProvidersController < ApplicationController
   # GET /providers
   # GET /providers.json
   def index
-    @providers = Provider.all
+    @providers = Provider.actives
   end
 
   # GET /providers/1
   # GET /providers/1.json
   def show
     @addresses = @provider.addresses.to_json
+
   end
 
   # GET /providers/new
@@ -73,7 +74,7 @@ class ProvidersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_provider
-      @provider = Provider.find(params[:id])
+      @provider = Provider.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
