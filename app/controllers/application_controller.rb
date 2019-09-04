@@ -1,10 +1,19 @@
 class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
+    before_action :set_locale
 
 
     rescue_from CanCan::AccessDenied do |exception|
       flash[:notice] = exception.message
       redirect_to root_path
+    end
+
+    def set_locale
+      if [RailsAdmin].include?(self.class.parent)
+        I18n.locale = :en
+      else
+        I18n.locale = I18n.default_locale
+      end
     end
 
     protected

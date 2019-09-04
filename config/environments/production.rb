@@ -83,11 +83,7 @@ Rails.application.configure do
       password: Rails.application.credentials.email_password.to_s,
       openssl_verify_mode: 'none'
   }
-
-  config.i18n.available_locales = [:es, :en, 'es-NI']
-  config.i18n.default_locale = :es
   
-
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
