@@ -7,13 +7,14 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.active_products
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
     # :open_mouth:
+    @offers = Product.related_products_by_category(@product.category_id, @product.provider_id)
     @product_as_json = @product.as_json
     @product_as_json['category_description'] = @product.category.description
   end
@@ -78,7 +79,7 @@ class ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.friendly.find(params[:id])
     end
 
     def set_currency

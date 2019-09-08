@@ -18,6 +18,9 @@
 #
 
 class Product < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :history
+
   belongs_to :provider
   belongs_to :category
   has_many_attached :images
@@ -26,15 +29,21 @@ class Product < ApplicationRecord
   validates_numericality_of :price, greater_than: 0, message: 'is not a number'
 
   scope :related_products_by_category, -> (category_id, provider_id) { 
-    where('category_id = ? and provider_id != ?', category_id, provider_id).order('random()')
+    active_products.where('category_id = ? and provider_id != ?', category_id, provider_id).order('random()')
   }
+
+  scope :active_products, -> { joins(:provider).merge(Provider.actives) }
 
 
   
   CURRENCY = ['Dólar', 'Córdoba']
 
+  def is_active?
+    provider.is_active?
+  end
+
   def related_products_by_provider
-    provider.products.where.not(id: id).order('random()') 
+    provider.products.where.not(id: id).order('random()')
   end
 
   def has_images?

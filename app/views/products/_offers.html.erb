@@ -1,18 +1,20 @@
 <div class="row">
     <%# :thinking: %>
-    <% Product.related_products_by_category(@product.category.id, @product.provider.id).limit(3).each do |related_product| %>
+    <% @offers.limit(3).each do |related_product| %>
         <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" style="padding: 1% 0 0 5%;">
             <div class="card" style="width: 16rem;">
-                <a href="/products/<%= related_product.id %>">
+                <a href="/products/<%= related_product.slug %>">
                     <%= product_image related_product %>
                 </a>
                 <div class="card-body" style="padding: 1%;">
                     <p class="card-title text-center"><span class="badge badge-info"><%= formatted_price related_product %></span></p>
                     <p class="card-text text-center"><%= related_product.name %></p>
                     <p class="card-small-text text-center">
+                      <a href="/providers/<%= related_product.provider.slug %>">
                         <span class="badge badge-primary">
                             <%= related_product.provider.name %>
                         </span>
+                      </a>
                     </p>
                 </div>
             </div>
