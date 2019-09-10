@@ -7,7 +7,7 @@ class Ability
     user ||= User.new
 
     if user.guest?
-      can :read, [Product, Provider, Address]
+      can :read, [Product, Provider]
     elsif user.provider?
       unless user.provider.nil?
         can :manage, Product, provider_id: user.provider.id

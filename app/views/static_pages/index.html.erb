@@ -63,44 +63,19 @@ Categorías:
 <br>
 Productos:
 <div class="row">
-    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
+    <% @newer_products.limit(4).each do |new_product| %>
+      <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
         <div class="card" style="width: 16rem;">
-            <%= image_tag 'casco-amarillo.png', class: 'card-img-top' %>
-            <div class="card-body" style="padding: 1%;">
-                <p class="card-title blue-color">Precio</p>
-                <p class="card-small-text">Descripción</p>
-            </div>
+          <a href="/products/<%= new_product.slug %>">
+            <%= product_image new_product %>
+          </a>
+          <div class="card-body" style="padding: 1%;">
+            <p class="card-title blue-color">Precio</p>
+            <p class="card-small-text">Descripción</p>
+          </div>
         </div>
-    </div>
-    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-        <div class="card" style="width: 16rem;">
-            <%= image_tag 'bloque.png', class: 'card-img-top' %>
-            <div class="card-body" style="padding: 1%;">
-                <p class="card-title blue-color">Precio</p>
-                <p class="card-small-text">Descripción</p>
-            </div>
-        </div>  
-    </div>
-    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-        <div class="card" style="width: 16rem;">
-            <%= image_tag 'grifo.png', class: 'card-img-top' %>
-            <div class="card-body" style="padding: 1%;">
-                <p class="card-title blue-color">Precios</p>
-                <p class="card-small-text">Descripción</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-        <div class="card" style="width: 16rem;">
-            <a href="/">
-                <%= image_tag 'taladro-amarillo.png', class: 'card-img-top' %>
-            </a>
-            <div class="card-body" style="padding: 1%;">
-                <p class="card-title blue-color">Precios</p>
-                <p class="card-small-text">Descripción</p>
-            </div>
-        </div>
-    </div>
+      </div>
+    <% end %>
 </div>
 
 <br>

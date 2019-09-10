@@ -29,10 +29,12 @@ class Product < ApplicationRecord
   validates_numericality_of :price, greater_than: 0, message: 'is not a number'
 
   scope :related_products_by_category, -> (category_id, provider_id) { 
-    active_products.where('category_id = ? and provider_id != ?', category_id, provider_id).order('random()')
+    actives.where('category_id = ? and provider_id != ?', category_id, provider_id).order('random()')
   }
 
-  scope :active_products, -> { joins(:provider).merge(Provider.actives) }
+  scope :newer, -> { actives.order('created_at DESC') }
+
+  scope :actives, -> { joins(:provider).merge(Provider.actives) }
 
 
   

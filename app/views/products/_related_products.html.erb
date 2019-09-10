@@ -2,7 +2,7 @@
     <% @product.related_products_by_provider.limit(3).each do |related_product| %>
         <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" style="padding: 1% 0 0 5%;">
             <div class="card" style="width: 16rem;">
-                <a href="/products/<%= related_product.id %>">
+                <a href="/products/<%= related_product.slug %>">
                     <%= product_image related_product %>
                 </a>
                 <div class="card-body" style="padding: 1%;">
