@@ -129,3 +129,28 @@ table.dataTable tbody tr:hover {
 .bx-wrapper img {
     margin: 0 auto;
 }
+
+.icon-svg {
+	/*display: block;*/
+	width: 15px;
+	height: 15px;
+	vertical-align: top;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.favorited path {
+    fill: red !important;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: #fff;
+}
+
+.svg-icon:hover path {
+  fill: rgb(255, 0, 0);
+}

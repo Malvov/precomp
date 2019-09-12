@@ -29,3 +29,48 @@ const getProductImages = async (productId) => {
     }
 }
 
+const markAsFavorite = (productSlug, favorited) => {
+
+    return new Promise((resolve, reject) => {
+        if (favorited) {
+            $.ajax({
+                url: `/favorite_products/${productSlug}`,
+                type: 'DELETE',
+                success: response => resolve(response),
+                error: error => reject(error)
+            });
+        } else {
+            $.ajax({
+                url: '/favorite_products',
+                type: 'POST',
+                data: { product_id: productSlug },
+                success: response => resolve(response),
+                error: error => reject(error)
+            });
+        }
+    });
+
+}
+
+$(document).on('turbolinks:load', function() {
+    var icon = $('.icon-svg');
+
+    icon.click(() => {
+        let productSlug = icon.attr('id');
+        let isFavorited = icon.children().first().hasClass('favorited');
+        console.log(isFavorited);
+        let favorited = markAsFavorite(productSlug, isFavorited);
+
+        favorited.then((response) => {
+            console.log(response.marked);
+            // if (response.marked) {
+            //     icon.addClass('favorited');
+            // } else {
+            //     icon.removeClass('favorited');
+            // }
+
+        }).catch(error => console.log(error));
+        
+    });
+});
+

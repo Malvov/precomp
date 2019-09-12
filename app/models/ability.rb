@@ -12,6 +12,7 @@ class Ability
       unless user.provider.nil?
         can :manage, Product, provider_id: user.provider.id
       end
+      can :manage, Favorite, user_id: user.id
       can :manage, Address, provider: { user_id: user.id }
       can :update, Provider, user_id: user.id
     elsif user.admin?
