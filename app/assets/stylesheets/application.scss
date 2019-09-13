@@ -141,15 +141,17 @@ table.dataTable tbody tr:hover {
     display: inline-block;
 }
 
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect,
+.unfavorited path {
+  fill: #fff !important;
+}
+
 .favorited path {
     fill: red !important;
 }
 
-.svg-icon path,
-.svg-icon polygon,
-.svg-icon rect {
-  fill: #fff;
-}
 
 .svg-icon:hover path {
   fill: rgb(255, 0, 0);
