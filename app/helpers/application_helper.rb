@@ -12,4 +12,14 @@ module ApplicationHelper
     end
     nil
   end
+
+  def heart_icon product_slug, is_favorite
+    content_tag :span, :class => "icon-svg inline #{ is_favorite ? 'favorited' : '' }", :id => product_slug do
+			content_tag :svg, :class=> "svg-icon", :id => 'icon', :viewBox => "0 0 24 24" do
+				content_tag :path, :fill => "none", :d => "M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z" do
+                end
+          end
+			end
+  end
+  
 end

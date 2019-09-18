@@ -23,6 +23,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
+  has_many :products
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_products, through: :favorites, source: :product
+
   before_update :skip_confirmation!
 
   enum role: { guest: 0, provider: 1, admin: 2 }
