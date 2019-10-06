@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.active_products
+    @products = Product.actives
   end
 
   # GET /products/1

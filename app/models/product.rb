@@ -25,7 +25,7 @@ class Product < ApplicationRecord
   belongs_to :category
   has_many_attached :images
   
-  has_many :users
+  
   has_many :favorites, dependent: :destroy
   has_many :favorited_by, through: :favorites, source: :user
 
