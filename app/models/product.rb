@@ -19,6 +19,7 @@
 
 class Product < ApplicationRecord
   extend FriendlyId
+  include PgSearch
   friendly_id :name, use: :history
 
   belongs_to :provider
@@ -40,8 +41,9 @@ class Product < ApplicationRecord
 
   scope :actives, -> { joins(:provider).merge(Provider.actives) }
 
+  pg_search_scope :global_search, against: [:name, :description, :trademark],
+   associated_against: { provider: [:name], category: [:description] }, using: { tsearch: { any_word: true } }
 
-  
   CURRENCY = ['Dólar', 'Córdoba']
 
   def is_active?

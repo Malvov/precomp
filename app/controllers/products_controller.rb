@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
@@ -7,7 +9,15 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.actives.paginate page: params[:page], per_page: 8
+    products = Product.all
+    if params[:search]
+      filter = params[:search][:terms]
+      filtered_products = products.global_search("#{filter}").to_a
+      products = Product.actives.merge filtered_products
+    else
+      products = Product.actives
+    end
+    @products = products.paginate page: params[:page], per_page: 8
   end
 
   # GET /products/1
