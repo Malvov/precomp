@@ -1,3 +1,23 @@
-<% @favorite_products.each do |favorite_product| %>
-  <h1><%= favorite_product.name %></h1>
-<% end %>
+<% provide :title, 'Favoritos' %>
+
+<div class="row" style="margin-top: 5%;">
+    <%@favorite_products.each_slice(4) do |products| %>
+      <% products.each do |product| %>
+        <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12" style="margin-top: 2%;">
+          <div class="card" style="width: 16rem;">
+            <a href="/products/<%= product.slug %>">
+              <%= product_image product %>
+            </a>
+            <div class="card-body" style="padding: 1%;">
+              <p class="card-title blue-color"><%= formatted_price product %></p>
+              <p class="card-small-text"><%= product.description %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+</div>
+
+<div class="col-4 mx-auto" style="margin-top: 2%;">
+  <%= will_paginate(@products, :previous_label => 'Anterior', :next_label => 'Siguiente', :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+</div>
