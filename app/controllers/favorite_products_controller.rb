@@ -4,7 +4,7 @@ class FavoriteProductsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def index
-        @favorite_products = current_user.favorite_products.actives.paginate page: params[:page], per_page: 16
+        @favorite_products = current_user.favorite_products.actives.paginate page: params[:page], per_page: 8
     end
 
     def create
