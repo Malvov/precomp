@@ -96,3 +96,6 @@ gem 'bootstrap-will_paginate'
 
 # pg_search
 gem 'pg_search'
+
+# roo
+gem 'roo'

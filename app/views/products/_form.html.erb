@@ -133,6 +133,19 @@
                     <%= form.text_field :tags, class: 'tags form-control', multiple: true %>
                 </div>
             </div>
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+              <div class="form-group">
+                <label for="name">Tiempo estimado de respuesta</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="fa fa-clock-o"></i>
+                    </div>
+                  </div>
+                  <%= form.text_field :estimated_delivery_time, class: 'form-control' %>
+                </div>
+              </div>
+           </div>
         </div>
 
       <div class="row">

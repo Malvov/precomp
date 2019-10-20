@@ -37,7 +37,7 @@ const setProductInfo = (product) => {
     productCategory.innerText = product.category_description;
     productDescription.innerHTML = product.description;
     productPrice.innerHTML = `${ product.formatted_price } |`;
-    productEstimatedDeliveryTime.innerHTML = `${ product.estimated_delivery_time } |`;
+    productEstimatedDeliveryTime.innerHTML = `${ product.estimated_delivery_time === null ? '' : product.estimated_delivery_time  } |`;
     productMeasurementUnit.innerHTML = `${ product.measurement_unit } |`;
     productTrademark.innerHTML = product.trademark;
     editProductPath.setAttribute('href', `/products/${ product.id }/edit`);

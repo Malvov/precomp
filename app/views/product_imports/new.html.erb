@@ -1,0 +1,10 @@
+<% provide :title, 'Import' %>
+
+
+<h2>Import Products</h2>
+
+<%= form_tag product_imports_path, method: :post, multipart: true do %>
+  <%= collection_select nil, :provider_id, Provider.all, :id, :name, prompt: true %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>

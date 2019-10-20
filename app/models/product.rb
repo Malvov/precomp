@@ -62,4 +62,13 @@ class Product < ApplicationRecord
     images.count > 0
   end
 
+  def self.product_attributes_dictionary attrs
+    syms = Array.new
+    attributes_in_spanish = { "Nombre" => :name, "Descripción" => :description,	
+      "Marca" => :trademark,	"Unidad de medida" => :measurement_unit,
+        "Tiempo estimado de entrega" => :estimated_delivery_time,	
+        "Precio" => :price, "Categoría" => :category_name, "Moneda" => :currency }
+    attrs.map { |attr| syms << attributes_in_spanish[attr] }
+    syms
+  end
 end

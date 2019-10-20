@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :product_images, only: :index
+  resources :product_imports, only: [:new, :create]
 
   resources :providers do
     resources :addresses, path: :branch_offices, as: :branch_offices, except: [:destroy, :show]
