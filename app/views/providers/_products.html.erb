@@ -1,42 +1,19 @@
-<div class="row" style="margin-top: 1%;">
-    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-        <div class="card" style="width: 16rem;">
-            <%= image_tag 'construccion-icono.png', class: 'card-img-top' %>
-            <div class="card-body" style="padding: 1%;">
-                <p class="card-title blue-color-bold">Construcción</p>
-                <p class="card-small-text">Todo en materiales de construcción</p>
-                <div></div>
+<div class="row">    
+    <% @products.each do |product| %>
+        <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" style="padding: 1% 0 0 5%;">
+            <div class="card" style="width: 16rem;">
+                <a href="/products/<%= product.slug %>">
+                    <%= product_image product %>
+                </a>
+                <div class="card-body" style="padding: 1%;">
+                    <p class="card-title text-center"><span class="badge badge-info"><%= formatted_price product %></span></p>
+                    <p class="card-text text-center"><%= product.name %></p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-        <div class="card" style="width: 16rem;">
-            <%= image_tag 'herramientas-icono.png', class: 'card-img-top' %>
-            <div class="card-body" style="padding: 1%;">
-                <p class="card-title blue-color-bold">Herramientas</p>
-                <p class="card-small-text">Herramientas eléctricas y manuales, para mecánica, carpintería, etc.</p>
-            </div>
-        </div>  
-    </div>
-    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-        <div class="card" style="width: 16rem;">
-            <%= image_tag 'pinturas-icono.png', class: 'card-img-top' %>
-            <div class="card-body" style="padding: 1%;">
-                <p class="card-title blue-color-bold">Pinturas y pegamentos</p>
-                <p class="card-small-text">Pinturas, pegamentos, recubrimientos y demás productos químicos.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-        <div class="card" style="width: 16rem;">
-            <a href="/">
-                <%= image_tag 'petreos-icono.png', class: 'card-img-top' %>
-            </a>
-            <div class="card-body" style="padding: 1%;">
-                <p class="card-title blue-color-bold">Productos pétreos y cementos</p>
-                <p class="card-small-text">Cementos, gravas, bloques y demás productos pétreos.</p>
-                <div></div>
-            </div>
-        </div>
-    </div>
+    <% end %>
+</div>
+
+<div class="col-4 mx-auto" style="margin-top: 2%;">
+  <%= will_paginate(@products, :previous_label => 'Anterior', :next_label => 'Siguiente', :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
 </div>

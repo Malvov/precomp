@@ -13,13 +13,13 @@ class ProvidersController < ApplicationController
   # GET /providers/1.json
   def show
     @addresses = @provider.addresses.to_json
-
+    @products = @provider.products.paginate page: params[:page], per_page: 3
   end
 
   # GET /providers/new
   def new
     unless current_user.provider.nil?
-      redirect_to profile_path, notice: 'No se puede completar esta acción. Usted ya tiene una cuenta de proveedor.'    
+      redirect_to profile_path, notice: 'No se puede completar esta acción. Usted ya tiene una cuenta de proveedor.', status: 403    
     else
       @provider = Provider.new
     end

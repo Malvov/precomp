@@ -34,20 +34,20 @@
           <div style="padding: 1%;">
             <ul class="nav justify-content-center nav-tabs" id="providerTab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" id="branch-offices-tab" data-toggle="tab" href="#branch-offices" role="tab" aria-controls="home" aria-selected="true">Sucursales</a>
+                <a class="nav-link" id="branch-offices-tab" data-toggle="tab" href="#branch-offices" role="tab" aria-controls="home" aria-selected="true">Sucursales</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="products-tab" data-toggle="tab" href="#products" role="tab" aria-controls="profile" aria-selected="false">Catálogo</a>
+                <a class="nav-link active" id="products-tab" data-toggle="tab" href="#products" role="tab" aria-controls="profile" aria-selected="false">Catálogo</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="faq-tab" data-toggle="tab" href="#faq" role="tab" aria-controls="contact" aria-selected="false">Preguntas frecuentes</a>
               </li>
             </ul>
             <div class="tab-content" id="myProviderTabContent">
-              <div class="tab-pane fade show active" id="branch-offices" role="tabpanel" aria-labelledby="branch-offices-tab">
+              <div class="tab-pane fade" id="branch-offices" role="tabpanel" aria-labelledby="branch-offices-tab">
                 <%= render 'addresses' %>
               </div>
-              <div class="tab-pane fade" id="products" role="tabpanel" aria-labelledby="products-tab">
+              <div class="tab-pane fade show active" id="products" role="tabpanel" aria-labelledby="products-tab">
                 <%= render 'products' %>
               </div>
               <div class="tab-pane fade" id="faq" role="tabpanel" aria-labelledby="faq-tab">...</div>
