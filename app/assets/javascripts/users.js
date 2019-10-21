@@ -16,7 +16,7 @@ $(document).on('turbolinks:load', () => {
             if (productImages.length > 0) {
                 elementProductImage.attr('src', productImages[0].url);
             } else {
-            elementProductImage.attr('src', noImgUrl); // see assets.js.erb
+                elementProductImage.attr('src', noImgUrl); // see assets.js.erb
             }
 
         });
