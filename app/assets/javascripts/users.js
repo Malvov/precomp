@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function() {
     var elementProductImage = $('#product-image');
     
-    $('td').each(function () {
+    $('td').each(function() {
         var productData = $(this);
         productData.click(async function() {
             

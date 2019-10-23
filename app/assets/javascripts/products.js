@@ -3,7 +3,7 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 // :')
-var getProduct = async function (productId) {
+var getProduct = async function(productId) {
 
     try {
         var product = await $.getJSON(`/products/${ productId }.json`);
@@ -18,7 +18,7 @@ var getProduct = async function (productId) {
     }    
 }
 
-var getProductImages = async function (productId) {
+var getProductImages = async function(productId) {
     try {
         var productImages= await $.getJSON('/product_images', { product_id: productId });
 
@@ -29,20 +29,20 @@ var getProductImages = async function (productId) {
     }
 }
 
-var unmarkAsFavorite = (productSlug) => {
-    return new Promise((resolve, reject) => {
+var unmarkAsFavorite = function (productSlug) {
+    return new Promise( function(resolve, reject){
         $.ajax({
             url: `/favorite_products/${productSlug}`,
             type: 'DELETE',
-            success: function (response) { resolve(response); },
-            error: function (error) { reject(error); }
+            success: function(response) { resolve(response); },
+            error: function(error) { reject(error); }
         });
     });
 }
 
-var markAsFavorite = (productSlug) => {
+var markAsFavorite =  function(productSlug) {
 
-    return new Promise((resolve, reject) => {
+    return new Promise(function(resolve, reject) {
         $.ajax({
             url: '/favorite_products',
             type: 'POST',
