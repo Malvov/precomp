@@ -148,25 +148,39 @@
            </div>
         </div>
 
-      <div class="row">
-        <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
-            <label for="product_images">Buscar imágenes del producto</label> 
-            <%= form.file_field :images, multiple: true, accept:'image/png' %>         
-        </div>
-        <div class="col-md-10 col-lg-10 col-sm-12 col-xs-12">
-          <% if form.object.new_record? || !form.object.images.attached? %>
-            <img class="img-fuild" id="img-prev" src="#" alt="" />
-          <% else %>
-            <% form.object.images.each do |image| %>
-                <%= image_tag image, size: '180x180', class: 'img-fluid' %>
-                <%= link_to remove_attachment_product_path(image), class: 'btn btn-danger', method: :delete do %>
-                   <span class="fa fa-trash-o"></span>
-                <% end %>
-            <% end %>
-            <%# image_tag form.object.logo, size: '180x180', id: 'img-prev', class: 'img-fuild' %>
-          <% end %>
+        <div class="row">
+        <div class="col-md-6 col-lg-12 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <div class="form-check pl-0">
+              <%= form.check_box :available, class: 'form-check-input',
+              'readonly': true,
+              'data-toggle': 'toggle', 'data-on': 'Sí', 'data-off': 'No', 
+              'data-onstyle': 'success', 'data-offstyle': 'danger' %>
+             <label for="available" class="form-check-label">¿Disponible?</label>
+            </div>
+          </div>
         </div>
       </div>
+
+        <div class="row">
+          <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
+              <label for="product_images">Buscar imágenes del producto</label> 
+              <%= form.file_field :images, multiple: true, accept:'image/png' %>         
+          </div>
+          <div class="col-md-10 col-lg-10 col-sm-12 col-xs-12">
+            <% if form.object.new_record? || !form.object.images.attached? %>
+              <img class="img-fuild" id="img-prev" src="#" alt="" />
+            <% else %>
+              <% form.object.images.each do |image| %>
+                  <%= image_tag image, size: '180x180', class: 'img-fluid' %>
+                  <%= link_to remove_attachment_product_path(image), class: 'btn btn-danger', method: :delete do %>
+                    <span class="fa fa-trash-o"></span>
+                  <% end %>
+              <% end %>
+              <%# image_tag form.object.logo, size: '180x180', id: 'img-prev', class: 'img-fuild' %>
+            <% end %>
+          </div>
+        </div>
 
         <div class="actions">
             <%= form.submit 'Guardar', class: 'btn btn-success' %>

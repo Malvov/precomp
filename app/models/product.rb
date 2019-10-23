@@ -15,6 +15,8 @@
 #  updated_at              :datetime         not null
 #  category_id             :bigint
 #  currency                :string
+#  slug                    :string
+#  available               :boolean          default(FALSE)
 #
 
 class Product < ApplicationRecord

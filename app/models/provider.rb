@@ -38,7 +38,7 @@ class Provider < ApplicationRecord
     private
 
     def set_user_as_provider
-        user.update role: is_active? ? :provider : :guest
+        user.update role: if is_active then :provider else :guest
     end
 
 #     after_save :scale_image

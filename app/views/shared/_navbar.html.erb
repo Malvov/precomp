@@ -46,6 +46,11 @@
                 </li> %>
                 <% if user_signed_in? %>
                     <li class="nav-item">
+                        <%= link_to new_product_path, class: 'btn btn-danger' do %>
+                            Agregar producto
+                        <% end %>
+                    </li>
+                    <li class="nav-item">
                        <%= link_to favorite_products_path, class: 'nav-link blue-color' do %>
                           <i class="fa fa-bars fa-2x"></i>
                        <% end %>

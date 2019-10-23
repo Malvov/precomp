@@ -3,17 +3,18 @@ require 'will_paginate/array'
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :set_currency, only: :edit
+  before_action :set_currency, only: [:edit, :new, :create, :update]
   load_and_authorize_resource except: [:index, :show, :remove_attachment]
   
   # GET /products
   # GET /products.json
   def index
     products = Product.all
+    binding.pry
     if params[:category]
       products = Product.where category_id: params[:category]
       products = Product.actives.merge products
-    elsif !params[:search][:terms].blank?
+    elsif !params[:search].nil?
       filter = params[:search][:terms]
       filtered_products = products.global_search("#{filter}").to_a
       products = Product.actives.merge filtered_products
@@ -35,6 +36,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @product.provider_id = current_user.provider.id
   end
 
   # GET /products/1/edit
@@ -101,9 +103,8 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, 
+      params.require(:product).permit :name, 
         :description, :trademark, :measurement_unit, :estimated_delivery_time, :category_id,
-        :price, :time_span, :currency, tags: [], images: []
-      )
+        :price, :time_span, :currency, :available, tags: [], images: [] 
     end
 end
