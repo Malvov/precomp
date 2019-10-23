@@ -1,17 +1,17 @@
-$(document).on('turbolinks:load', () => {
+$(document).on('turbolinks:load', function() {
     var elementProductImage = $('#product-image');
     
     $('td').each(function () {
-        let productData = $(this);
-        productData.click(async () => {
+        var productData = $(this);
+        productData.click(async function() {
             
-            let productId = $(this).closest('tr').find('.product-id').html();
+            var productId = $(this).closest('tr').find('.product-id').html();
             
-            let product = await getProduct(productId);
+            var product = await getProduct(productId);
 
             setProductInfo(product);
 
-            let productImages = await getProductImages(product.id);
+            var productImages = await getProductImages(product.id);
 
             if (productImages.length > 0) {
                 elementProductImage.attr('src', productImages[0].url);
@@ -24,14 +24,14 @@ $(document).on('turbolinks:load', () => {
 });
 
 const setProductInfo = (product) => {
-    let productName = document.getElementById('product-name');
-    let productCategory =  document.getElementById('product-category');
-    let productDescription = document.getElementById('product-description');
-    let productPrice = document.getElementById('product-price');
-    let productEstimatedDeliveryTime = document.getElementById('product-estimated-delivery-time');
-    let productMeasurementUnit = document.getElementById('product-measurement-unit');
-    let productTrademark = document.getElementById('product-trademark');
-    let editProductPath = document.getElementById('edit-product-path');
+    var productName = document.getElementById('product-name');
+    var productCategory =  document.getElementById('product-category');
+    var productDescription = document.getElementById('product-description');
+    var productPrice = document.getElementById('product-price');
+    var productEstimatedDeliveryTime = document.getElementById('product-estimated-delivery-time');
+    var productMeasurementUnit = document.getElementById('product-measurement-unit');
+    var productTrademark = document.getElementById('product-trademark');
+    var editProductPath = document.getElementById('edit-product-path');
 
     productName.innerText = product.name;
     productCategory.innerText = product.category_description;

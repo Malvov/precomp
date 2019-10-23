@@ -1,9 +1,9 @@
 $(document).on('turbolinks:load', function() {
     $('#provider_logo').change((event) => {
         if (event.target.files && event.target.files[0]) {
-            let fileReader = new FileReader();
+            var fileReader = new FileReader();
 
-            fileReader.onload = (e) => {
+            fileReader.onload = function(e){
                 $('#img-prev').attr('src', e.target.result).width(180).height(180);
             };
 

@@ -3,10 +3,10 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 // :')
-const getProduct = async (productId) => {
+var getProduct = async function (productId) {
 
     try {
-        let product = await $.getJSON(`/products/${ productId }.json`);
+        var product = await $.getJSON(`/products/${ productId }.json`);
     
         if (product.length === 0) {
             throw new Error(`No existe producto con id ${ productId }`);
@@ -18,9 +18,9 @@ const getProduct = async (productId) => {
     }    
 }
 
-const getProductImages = async (productId) => {
+var getProductImages = async function (productId) {
     try {
-        let productImages= await $.getJSON('/product_images', { product_id: productId });
+        var productImages= await $.getJSON('/product_images', { product_id: productId });
 
         return productImages;
         
@@ -29,26 +29,26 @@ const getProductImages = async (productId) => {
     }
 }
 
-const unmarkAsFavorite = (productSlug) => {
+var unmarkAsFavorite = (productSlug) => {
     return new Promise((resolve, reject) => {
         $.ajax({
             url: `/favorite_products/${productSlug}`,
             type: 'DELETE',
-            success: response => resolve(response),
-            error: error => reject(error)
+            success: function (response) { resolve(response); },
+            error: function (error) { reject(error); }
         });
     });
 }
 
-const markAsFavorite = (productSlug) => {
+var markAsFavorite = (productSlug) => {
 
     return new Promise((resolve, reject) => {
         $.ajax({
             url: '/favorite_products',
             type: 'POST',
             data: { product_id: productSlug },
-            success: response => resolve(response),
-            error: error => reject(error)
+            success: function (response) { resolve(response); },
+            error: function (error) { reject(error); } 
         });
     });
 
@@ -58,8 +58,8 @@ $(document).on('turbolinks:load', function() {
     var icon = $('.icon-svg');
 
     icon.click(async () => {
-        let productSlug = icon.attr('id');
-        let isFavorited = icon.hasClass('favorited');
+        var productSlug = icon.attr('id');
+        var isFavorited = icon.hasClass('favorited');
 
         if (isFavorited) {
             icon.removeClass('favorited');
