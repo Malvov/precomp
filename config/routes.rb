@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   end
   
   resources :favorite_products, only: [:index, :destroy, :create]
-  
+
+  get '/advanced-search', to: 'static_pages#advanced_search'
+
   root to: 'static_pages#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

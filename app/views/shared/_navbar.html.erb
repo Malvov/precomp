@@ -22,19 +22,28 @@
                    Catálogo
                <% end %>
              </li>
-              <%= form_for :search, url: products_path, method: :get, html: { class: 'mx-2 my-auto d-inline w-70' } do |f| %>
-                <div class="input-group">
-                  <%= f.text_field :terms, class: 'form-control' %>
-                  <span class="input-group-append">
-                      <button type="submit" class="btn btn-primary">
-                          <i class="fa fa-search"></i>
-                          Buscar
-                      </button>
-                  </span>
-                </div>
-              <% end %>
             </ul>
             <ul class="navbar-nav">
+                <div class="mx-2 my-auto d-inline w-70">
+                    <%= form_for :search, url: products_path, method: :get do |f| %>
+                        <div class="input-group">
+                            <%= f.text_field :terms, class: 'form-control' %>
+                            <span class="input-group-append">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-search"></i>
+                                    Buscar
+                                </button>
+                            </span>
+                        </div>
+                    <% end %>
+                </div>
+                <div class="mx-2 my-auto d-inline w-70" style="background-color: #f2f2f2 !important;">
+                    <%= select_tag 'categories', options_from_collection_for_select(Category.all, :id, :description), include_blank: 'Escoger categoría', class: 'form-control select-small' %>
+                </div>
+                <li class="nav-item blue-color">
+                  <%= link_to 'Búsqueda avanzada', advanced_search_path, style: 'color: white !important;', class: 'nav-link btn btn-outline-dark' %>
+                </li>
+
                 <%# <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Dropdown
@@ -45,11 +54,6 @@
                     </div>
                 </li> %>
                 <% if user_signed_in? %>
-                    <li class="nav-item">
-                        <%= link_to new_product_path, class: 'btn btn-danger' do %>
-                            Agregar producto
-                        <% end %>
-                    </li>
                     <li class="nav-item">
                        <%= link_to favorite_products_path, class: 'nav-link blue-color' do %>
                           <i class="fa fa-bars fa-2x"></i>

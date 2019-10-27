@@ -38,14 +38,6 @@ class Provider < ApplicationRecord
     private
 
     def set_user_as_provider
-        user.update role: if is_active then :provider else :guest
+        user.update role: if is_active then :provider else :gues end
     end
-
-#     after_save :scale_image
-
-#   def scale_image
-#     resized_image = MiniMagick::Image.read logo.download
-#     resized_image.resize '180x180!'
-#     logo.attach io: File.open(resized_image.path), filename: logo.filename, content_type: logo.content_type
-#   end
 end

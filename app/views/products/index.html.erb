@@ -1,11 +1,5 @@
 <% provide :title, 'Productos' %>
 
-<%= form_for :search, url: products_path, method: :get, html: { class: 'form-inline' } do |f| %>
-  <%= f.label 'Búsqueda', class: 'control-label' %>
-  <%= f.text_field :terms, class: 'form-control', input_html: { value: ''} %>   
-  <%= f.submit 'Search', class: 'btn btn-primary' %>
-<% end %>
-
 <div class="row" style="margin-top: 5%;">
     <% @products.each_slice(4) do |products| %>
       <% products.each do |product| %>

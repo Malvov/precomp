@@ -25,6 +25,12 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
+
+    $('#categories').on('change', function(event) {
+        var categoryId = $(this).val();
+        window.location.replace('/products?category=' + categoryId);
+    });
+
     $('.datepicker').datepicker({
         language: 'es'
     });
