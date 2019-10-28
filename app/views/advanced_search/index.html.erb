@@ -1,0 +1,41 @@
+<% provide :title, 'Búsqueda avanzada' %>
+<%= render 'shared/infobar', color: 'black' %>
+<div class="jumbotron" style="background: white !important;">
+  <div class="container">
+      <%= form_for :advanced_search, url: advanced_search_index_path, method: :get do |form| %>
+        <div class="text-center">
+            <h2>Búsqueda avanzada</h2>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                  <%= form.text_field :terms, class: 'form-control' %>
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-6 col-xl-6">
+                  <button type="submit" class="btn btn-primary">Realizar búsqueda</button>
+                </div> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-xs-12 col-sm-12 col-lg-4 col-xl-4">
+                <label>Escoger:</label>
+                <%= form.collection_select :categories_advanced, Category.all, :id, :description, { include_blank: 'Categoría' }, { class: 'form-control' } %>
+            </div>
+            <div class="col-md-4 col-xs-12 col-sm-12 col-lg-4 col-xl-4">
+                <label>Escoger:</label>
+                <%= form.collection_select :providers, Provider.all, :id, :name, { include_blank: 'Proveedor' }, { class: 'form-control' } %>
+            </div>
+            <div class="col-md-4 col-xs-12 col-sm-12 col-lg-4 col-xl-4">
+              <label>Buscar por:</label>
+              <%= form.collection_select :type, [['Producto', :product], ['Proveedor', :provider]], :last, :first, { include_blank: false }, { class: 'form-control' }  %>
+            </div>
+        </div>    
+      <% end %>
+  </div>
+</div>
+
+<div class="row bottom">
+    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+        <%= image_tag 'anuncio-con-texto.png', class: 'img-fluid' %>
+    </div>
+</div>

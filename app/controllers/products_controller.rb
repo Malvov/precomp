@@ -10,11 +10,11 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     products = Product.all
-    #binding.pry
+    binding.pry
     if params[:category]
       products = Product.where category_id: params[:category]
       products = Product.actives.merge products
-    elsif !params[:search].nil?
+    elsif !params[:search][:terms].empty?
       filter = params[:search][:terms]
       filtered_products = products.global_search("#{filter}").to_a
       products = Product.actives.merge filtered_products

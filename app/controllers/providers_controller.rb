@@ -6,7 +6,7 @@ class ProvidersController < ApplicationController
   # GET /providers
   # GET /providers.json
   def index
-    @providers = Provider.actives
+    @providers = Provider.actives.paginate page: params[:page], per_page: 8
   end
 
   # GET /providers/1

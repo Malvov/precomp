@@ -1,5 +1,7 @@
 <% provide :title, 'Productos' %>
 
+<%= render 'shared/infobar', color: 'black' %>
+
 <div class="row" style="margin-top: 5%;">
     <% @products.each_slice(4) do |products| %>
       <% products.each do |product| %>

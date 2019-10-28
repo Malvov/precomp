@@ -17,11 +17,11 @@ Rails.application.routes.draw do
   resources :providers do
     resources :addresses, path: :branch_offices, as: :branch_offices, except: [:destroy, :show]
   end
+
+  resources :advanced_search, only: :index
   
   resources :favorite_products, only: [:index, :destroy, :create]
-
-  get '/advanced-search', to: 'static_pages#advanced_search'
-
+  
   root to: 'static_pages#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
