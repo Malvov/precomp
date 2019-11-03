@@ -12,29 +12,54 @@
                   <%= form.text_field :terms, class: 'form-control' %>
                 </div>
                 <div class="col-xs-12 col-md-6 col-lg-6 col-xl-6">
-                  <button type="submit" class="btn btn-primary">Realizar búsqueda</button>
+                  <button type="submit" class="btn btn-primary"> <i class="fa fa-search"></i> Realizar búsqueda</button>
                 </div> 
             </div>
         </div>
         <div class="row">
             <div class="col-md-4 col-xs-12 col-sm-12 col-lg-4 col-xl-4">
                 <label>Escoger:</label>
-                <%= form.collection_select :categories_advanced, Category.all, :id, :description, { include_blank: 'Categoría' }, { class: 'form-control' } %>
+                <%= form.collection_select :categories_advanced, Category.all, :id, :description, { include_blank: 'Categoría', selected: @category }, { class: 'form-control' } %>
             </div>
             <div class="col-md-4 col-xs-12 col-sm-12 col-lg-4 col-xl-4">
                 <label>Escoger:</label>
-                <%= form.collection_select :providers, Provider.all, :id, :name, { include_blank: 'Proveedor' }, { class: 'form-control' } %>
+                <%= form.collection_select :providers, Provider.all, :id, :name, { include_blank: 'Proveedor', selected: @provider }, { class: 'form-control' } %>
             </div>
             <div class="col-md-4 col-xs-12 col-sm-12 col-lg-4 col-xl-4">
               <label>Buscar por:</label>
-              <%= form.collection_select :type, [['Producto', :product], ['Proveedor', :provider]], :last, :first, { include_blank: false }, { class: 'form-control' }  %>
+              <%= form.collection_select :type, [['Producto', :products], ['Proveedor', :providers]], :last, :first, { include_blank: false, selected: @type }, { class: 'form-control' }  %>
             </div>
         </div>    
       <% end %>
   </div>
 </div>
 
-<div class="row bottom">
+<% if @results.count > 0 %>
+  <div class="row" style="margin-top: 5%;">
+    <% @results.each_slice(4) do |result| %>
+      <% result.each do |result| %>
+        <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12" style="margin-top: 2%;">
+          <div class="card" style="width: 16rem;">
+            <a href="/<%= @type %>/<%= result.slug %>">
+                <% if @type == 'products' %>
+                   <% product = Product.find result.id %>
+                   <%= product_image product %>
+                <% else %>
+                    <% provider = Provider.find result.id %>
+                    <%= provider_image provider %>
+                <% end %>
+            </a>
+            <div class="card-body" style="padding: 1%;">
+              <p class="card-small-text"><%= result.name %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="row bottom" style="margin-top: 5%;">
     <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
         <%= image_tag 'anuncio-con-texto.png', class: 'img-fluid' %>
     </div>
