@@ -1,7 +1,7 @@
 <% provide :title, 'Búsqueda avanzada' %>
 <%= render 'shared/infobar', color: 'black' %>
 <div class="jumbotron" style="background: white !important;">
-  <div class="container">
+  <div class="container fluid">
       <%= form_for :advanced_search, url: advanced_search_index_path, method: :get do |form| %>
         <div class="text-center">
             <h2>Búsqueda avanzada</h2>
@@ -35,28 +35,28 @@
 </div>
 
 <% if @results.count > 0 %>
-  <div class="row" style="margin-top: 5%;">
     <% @results.each_slice(4) do |result| %>
-      <% result.each do |result| %>
-        <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12" style="margin-top: 2%;">
-          <div class="card" style="width: 16rem;">
-            <a href="/<%= @type %>/<%= result.slug %>">
-                <% if @type == 'products' %>
-                   <% product = Product.find result.id %>
-                   <%= product_image product %>
-                <% else %>
-                    <% provider = Provider.find result.id %>
-                    <%= provider_image provider %>
-                <% end %>
-            </a>
-            <div class="card-body" style="padding: 1%;">
-              <p class="card-small-text"><%= result.name %></p>
+      <div class="row" style="margin-top: 5%;">
+        <% result.each do |result| %>
+          <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12" style="margin-top: 2%;">
+            <div class="card" style="width: 16rem;">
+              <a href="/<%= @type %>/<%= result.slug %>">
+                  <% if @type == 'products' %>
+                    <% product = Product.find result.id %>
+                    <%= product_image product %>
+                  <% else %>
+                      <% provider = Provider.find result.id %>
+                      <%= provider_image provider %>
+                  <% end %>
+              </a>
+              <div class="card-body" style="padding: 1%;">
+                <p class="card-small-text"><%= result.name %></p>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
-  </div>
 <% end %>
 
 <div class="row bottom" style="margin-top: 5%;">
