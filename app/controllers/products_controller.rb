@@ -10,7 +10,6 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     products = Product.all
-    binding.pry
     if params[:category]
       products = Product.where category_id: params[:category]
       products = Product.actives.merge products
