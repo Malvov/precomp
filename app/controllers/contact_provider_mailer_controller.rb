@@ -6,6 +6,6 @@ class ContactProviderMailerController < ApplicationController
         @provider = Provider.friendly.find params[:provider_id]
         @from ||= params[:from]
         @body ||= params[:body]
-        ProviderMailer.with(provider: @provider).new.deliver_now
+        ProviderMailer.with(email: @provider.email, from: @from, body: @body).new.deliver_now
     end
 end
