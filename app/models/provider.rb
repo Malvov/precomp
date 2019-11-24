@@ -16,6 +16,9 @@
 #  updated_at             :datetime         not null
 #  user_id                :bigint
 #  slug                   :string
+#  facebok_page           :string           default("#")
+#  instagram_page         :string           default("#")
+#  twitter_page           :string           default("#")
 #
 
 class Provider < ApplicationRecord
