@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :providers do
     resources :addresses, path: :branch_offices, as: :branch_offices, except: [:destroy, :show]
+    resources :contact_provider_mailer, only: [:new, :create]
   end
 
   resources :advanced_search, only: :index

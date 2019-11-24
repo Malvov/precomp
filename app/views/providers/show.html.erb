@@ -17,7 +17,7 @@
           <h4 style="display: inline;"><%= @provider.name %> </h4>
         </div>
         <div class="col-12 provider-info">
-          <%= link_to 'Contactar proveedor', '#', class: 'btn btn-danger' %>
+          <%= link_to 'Contactar proveedor', new_provider_contact_provider_mailer_path(@provider.id), remote: true, class: 'btn btn-danger' %>
         </div>        
         <div class="col-12 provider-info">
           <%= link_to 'Sitio web del proveedor', @provider.webpage_link.html_safe || '#', class: 'blue-color' %>
