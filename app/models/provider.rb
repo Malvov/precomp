@@ -41,6 +41,6 @@ class Provider < ApplicationRecord
     private
 
     def set_user_as_provider
-        user.update role: if is_active then :provider else :gues end
+        user.update role: if is_active then :provider else :guest end
     end
 end
