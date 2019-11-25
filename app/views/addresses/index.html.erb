@@ -1,1 +1,27 @@
-address index
+<%= provide :title, 'Sucursales' %>
+<% provide :head_tags do %>
+  <meta name='turbolinks-visit-control' content='reload'>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      initAddressIndexShowMaps(<%= @addresses_to_json .html_safe %>)
+    });
+  </script>
+<% end %>
+<br>
+<%= link_to 'Nueva sucursal', new_provider_branch_office_path(@provider.slug), class: 'btn btn-success' %>
+
+<div class="row">
+  <% @addresses.each_slice(4) do |addresses| %>
+      <% addresses.each do |address| %>
+          <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12" style="margin-top: 2%;">
+            <div class="card" style="width: 16rem;">
+              <div id="show-map-<%= address.id %>" style="width: 100%; height: 20em"></div>
+              <div class="card-body" style="padding: 1%;">
+                  <p class="card-text"><%= address.description %></p>
+                  <%= link_to 'Editar', edit_provider_branch_office_path(@provider.slug, address.id), class: 'btn btn-primary' %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+  <% end %>
+</div>

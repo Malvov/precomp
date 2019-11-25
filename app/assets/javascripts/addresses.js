@@ -51,3 +51,7 @@ function initInputMap() {
         map.panTo(marker.getPosition());   
     });
 };
+
+var initAddressIndexShowMaps = function initAddressIndexShowMaps(addresses) {
+    return initShowMap(addresses);
+}

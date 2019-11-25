@@ -1,16 +1,17 @@
 class AddressesController < ApplicationController
+  before_action :set_provider, only: [:new, :index]
   before_action :set_address, only: [:show, :edit, :update, :destroy]
 
   def index
-    @addresses = Address.where params[:provider_id]
+    @addresses = Address.where provider_id: @provider.id
+    @addresses_to_json = @addresses.to_json
   end
 
   def show
   end
 
   def new
-    @address = Address.new provider_id: params[:provider_id]
-    authorize! :create, @address
+    @address = Address.new provider_id: @provider.id
   end
 
   def create
@@ -18,7 +19,7 @@ class AddressesController < ApplicationController
     @address.provider_id = params[:provider_id]
     respond_to do |format|
       if @address.save
-        format.html { redirect_to provider_path(@address.provider), notice: 'Address was successfully created.' }
+        format.html { redirect_to provider_branch_offices_path(@address.provider), notice: 'Address was successfully created.' }
         format.json { render :show, status: :created, location: @address }
       else
         format.html { render :new }
@@ -50,6 +51,10 @@ class AddressesController < ApplicationController
 
   def set_address
     @address = Address.find params[:id]
+  end
+
+  def set_provider
+    @provider = Provider.friendly.find params[:provider_id]
   end
 
   def address_params

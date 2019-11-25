@@ -13,7 +13,8 @@ class Ability
         can :manage, Product, provider_id: user.provider.id
       end
       can :manage, Favorite, user_id: user.id
-      can :manage, Address, provider: { user_id: user.id }
+      can :create, Address
+      can :update, Address, provider_id: user.provider.id
       can :update, Provider, user_id: user.id
     elsif user.admin?
       can :access, :rails_admin   # grant access to rails_admin
