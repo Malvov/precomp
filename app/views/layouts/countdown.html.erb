@@ -12,6 +12,26 @@
          <%= javascript_include_tag 'countdown' %>
     </head>
 </html>
-<body>
+<body style="background-image: url(<%= image_path 'countdown_fondo1.png' %>); margin: 0;
+    padding: 0;
+    background-position: center top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;">
+    <nav class="navbar yellow-nav">
+        <div class="mx-auto" style="color: white;">
+            PRECIOS & PRODUCTOS PARA TU PROYECTO | TU CATÁLOGO DE COTIZACIONES AL ALCANCE DE UN CLIC
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+       <a class="navbar-brand" href="/">
+            <%= image_tag 'precomp-logo-sin-letras-pequenas.png', size: '200x48' %>
+        </a>
+    </nav>
     <%= yield %>
+    <div class="footer">
+        <%= image_tag 'precomp-lupa-negro', size: '70x70', style: 'vertical-align: middle;' %>
+        <span>CONTACTO: <a style="color: #211b23;" href="mailto:info@precomp.com.ni">INFO@PRECOMP.COM.NI</a></span>
+    </div>
 </body>

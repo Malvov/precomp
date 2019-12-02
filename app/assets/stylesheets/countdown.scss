@@ -1,19 +1,14 @@
-body{
-    margin: 0;
-    padding: 0;
-    // background: url('https://source.unsplash.com/HGsd8uD8Wes/1920x1280');
-    background-position: center top;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+$color-yellow: #ffd60d;
+$color-black:  #211b23;
+
 .wrapped{
     text-align: center;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     display: table;
-    position: absolute;
+    position: fixed;
     height: 100%;
     width: 100%;
+    margin: 4%;
 }
 .wrapped h1{
     color: #444;
@@ -40,4 +35,28 @@ body{
 .counter-class .counter-seconds{
     font-weight: 100;
     font-size: 50px;
+}
+
+.navbar {
+    padding: 1px !important;
+}
+
+.yellow-nav {
+    background-color: $color-yellow;
+}
+
+.bg-dark {
+    background-color: $color-black !important;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: $color-yellow;
+    color: $color-black;
+    text-align: center;
+    padding: 0.5em;
+    font-weight: bold;
 }
