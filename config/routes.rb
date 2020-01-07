@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   resources :favorite_products, only: [:index, :destroy, :create]
   
   root to: 'countdown#index'
+
+  get 'index', to: 'static_pages#index'
   # root to: 'static_pages#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
