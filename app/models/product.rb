@@ -30,7 +30,7 @@ class Product < ApplicationRecord
   
   
   has_many :favorites, dependent: :destroy
-  has_many :favorited_by, through: :favorites, source: :user
+  has_many :favorited_by, through: :favorites, source: :user, dependent: :destroy
 
   validates_presence_of :name, :description, :trademark, :currency
   validates_numericality_of :price, greater_than: 0, message: 'is not a number'

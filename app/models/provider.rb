@@ -25,8 +25,8 @@ class Provider < ApplicationRecord
     extend FriendlyId
     friendly_id :name, use: :history
 
-    has_many :addresses
-    has_many :products
+    has_many :addresses, dependent: :destroy
+    has_many :products, dependent: :destroy
     belongs_to :user
     has_one_attached :logo
 

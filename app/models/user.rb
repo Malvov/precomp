@@ -24,7 +24,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   has_many :favorites, dependent: :destroy
-  has_many :favorite_products, through: :favorites, source: :product
+  has_many :favorite_products, through: :favorites, source: :product, dependent: :destroy
 
   before_update :skip_confirmation!
 
