@@ -1,9 +1,9 @@
 module ProvidersHelper
     def provider_image provider
-        unless provider.attachment
+        unless provider.logo_attachment
             image_tag 'no-img.jpg', class: 'img-fluid'
         else
-            image_tag provider.attachment, class: 'img-fluid'
+            image_tag provider.logo_attachment, class: 'img-fluid'
         end
     end
 end
