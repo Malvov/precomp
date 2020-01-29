@@ -7,6 +7,7 @@ class AdvancedSearchController < ApplicationController
             @category = params[:advanced_search][:categories_advanced]
             @provider = params[:advanced_search][:providers]
             if @type == 'products'
+                
                 terms = params[:advanced_search][:terms] || ''
                 products = Product.global_search("#{terms}").to_a
                 if products.count <= 0
