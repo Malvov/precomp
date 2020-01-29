@@ -10,15 +10,15 @@ class AdvancedSearchController < ApplicationController
 
                 terms = params[:advanced_search][:terms] || ''
                 products = Product.global_search("#{terms}").to_a
-                puts products
+                puts products.to_s
                 if products.count <= 0
                     products = Product.all
-                    puts products
+                    puts products.to_s
                 end
                 products = Product.actives.merge products
 
-                puts products
-                
+                puts products.to_s
+
                 unless @category.blank?
                     products = products.where category_id: @category
                 end
