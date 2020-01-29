@@ -17,7 +17,10 @@ class AdvancedSearchController < ApplicationController
                 end
                 products = Product.actives.merge products
 
-                puts products.to_s
+                if products.class.to_s == 'Array'
+                    @results = products
+                    return @results
+                end
 
                 unless @category.blank?
                     products = products.where category_id: @category
