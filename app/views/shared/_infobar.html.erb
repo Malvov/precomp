@@ -1,6 +1,8 @@
- <div class="row" style="margin-left: 10%; color: <%= color %>;">
+ <div class="row" style="margin-left: 15%; color: <%= color %>;">
     <div class="col-sm-12 col-xs-12 col-md-2 col-lg-2 text-center row-center">
-       <i class="fa fa-address-card"></i> Nosotros |
+       <%= link_to about_path, style: 'text-decoration: none !important;' do%>
+         <i class="fa fa-address-card"></i> Nosotros |
+       <% end %>
     </div>
     <div class="col-sm-12 col-xs-12 col-md-2 col-lg-2 text-center row-center">
        <%= link_to providers_path, style: 'text-decoration: none !important;' do %>
@@ -10,7 +12,9 @@
     <div class="col-sm-12 col-xs-12 col-md-2 col-lg-2 text-center row-center">
         <i class="fa fa-envelope"></i> Contacto |
     </div>
-    <div class="col-sm-12 col-xs-12 col-md-2 col-lg-2 text-center row-center" stle="white-space: pre-wrap;">
-      <i class="fa fa-money"></i> Quiero vender productos
+    <div class="col-sm-12 col-xs-12 col-md-2 col-lg-2 text-center row-center">
+      <%= link_to 'https://blog.precomp.com.ni', style: 'text-decoration: none !important;' do %>
+        <i class="fa fa-quote-left"></i> Blog
+      <% end %>
     </div>
  </div>
