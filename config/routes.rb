@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     resources :contact_provider_mailer, only: [:new, :create]
   end
 
+  resources :contact_admin_mailer, only: [:new, :create]
+
   resources :advanced_search, only: :index
   
   resources :favorite_products, only: [:index, :destroy, :create]

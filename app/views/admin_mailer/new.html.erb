@@ -1,0 +1,36 @@
+
+<div class="row" style="border-bottom: 5px solid #0B98FF; width: 50%;">
+    <div class="col-6" style="margin-top: 1%;">
+        <%= image_tag image_url('https://storage.googleapis.com/precomp-ni/precomp-assets/images/images/Precomp_Logo_Icono.png'), class: 'img-fluid', size: '90x90' %>
+    </div>
+    <div class="col-6" style="margin-top: 10%;">
+        <strong>Contacto de usuario</strong>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 1%; width: 50%;">
+    <div class="col-12">
+        <h4>Nuevo mensaje de precomp</a></h4>
+    </div>
+    <div class="col-12">
+        <h5>Nombre: <%= @from %></h5>
+    </div>
+    <div class="col-12">
+        <h5>Correo: <a href="mailto:<%= @contact_email%>"><%= @contact_email %></a></h5>
+    </div>
+    <div class="col-12">
+        <h5>Tel: <%= @phone_number %></h5>
+    </div>
+    <div class="col-12">
+         <p>
+             <%= @body %>
+         </p>
+    </div>
+    <div class="col-12" style="border-top: 1px dashed gray;">
+         <p style="color: gray;">Enviado el <%= Date.today.strftime '%d/%m/%y' %> a las <%= Time.now.strftime '%H:%M' %></p>
+    </div>
+    <div class="col-12 mx-auto">
+        <%= image_tag image_url('https://storage.googleapis.com/precomp-ni/precomp-assets/images/images/precomp-logo-gris.png'), class: 'img-fluid' %>
+    </div>
+</div>
+

@@ -1,0 +1,10 @@
+Usted tiene un nuevo mensaje de: <%= @from %>
+
+<%= @body %>
+
+
+Por favor contactarme al correo: <%= @contact_email %>
+
+<% unless @phone_number.nil? %>
+   O al número: <%= @phone_number %>
+<% end %>
